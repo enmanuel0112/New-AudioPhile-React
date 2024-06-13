@@ -1,0 +1,37 @@
+@use '/src/scss/abstracts/variables' as v;
+// Buttons Mixin
+
+@mixin button ($padding, $color, $center, $fontSize, $fontFami, $width, $margin, $upperCase, $weight) {
+
+
+    padding: $padding;
+    color: $color;
+    text-align: $center;
+    font-size: $fontSize;
+    font-weight: $weight;
+    font-family: $fontFami;
+    width: $width;
+    margin: $margin;
+    text-transform: $upperCase;
+
+}
+
+// Responsive
+
+@mixin phone {
+    @media (max-width: 450px) {
+        @content;
+    }
+}
+
+@mixin ipadMini {
+    @media (max-width: 1020px) {
+        @content;
+    }
+}
+
+@mixin ipadPro {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}

@@ -1,0 +1,13 @@
+/*abstracts*/
+@use './abstracts/variables';
+@use './abstracts/mixins';
+
+/*base*/
+@use './base/base';
+@use './base/resets';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
