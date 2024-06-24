@@ -1,11 +1,10 @@
 import React from 'react'
-import { Menu, SectionBestAudio, Footer } from './staticsComponents';
+import { SectionBestAudio, Footer } from './staticsComponents';
 
 export default function Speakers() {
     return (
-        <div>speakers
-
-            <Menu />
+        <div>
+            <h1>speaker</h1>
             <SectionBestAudio />
             <Footer />
         </div>

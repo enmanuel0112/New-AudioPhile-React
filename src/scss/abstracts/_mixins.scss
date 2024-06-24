@@ -1,7 +1,7 @@
 @use '/src/scss/abstracts/variables' as v;
 // Buttons Mixin
 
-@mixin button ($padding, $color, $center, $fontSize, $fontFami, $width, $margin, $upperCase, $weight) {
+@mixin button ($padding, $color, $center, $fontSize, $fontFami, $width, $margin, $upperCase, $weight, $backgroundColor: v.$orange ) {
 
 
     padding: $padding;
@@ -13,6 +13,7 @@
     width: $width;
     margin: $margin;
     text-transform: $upperCase;
+    background-color: $backgroundColor;
 
 }
 
