@@ -3,6 +3,8 @@ import '../scss/StylesComponents/home.scss'
 import { SectionBestAudio, Footer } from './staticsComponents';
 import { Menu } from './staticsComponents';
 
+
+
 const images = require.context('./../assets');
 
 export default function Home() {
@@ -41,12 +43,33 @@ export default function Home() {
 
             <div className="zx7-section">
                 <div className="zx7-container">
-                    <img src={images('./home/desktop/image-speaker-zx7.jpg')} alt="" />
+                    <img className='img-desktop' src={images('./home/desktop/image-speaker-zx7.jpg')} alt="" />
+                    <img className='img-tablet' src={images('./home/tablet/image-speaker-zx7.jpg')} alt="" />
+                    <img className='img-mobile' src={images('./home/mobile/image-speaker-zx7.jpg')} alt="" />
                     <div className="zx7-content">
                         <h3>zx7 speaker</h3>
-                        <button>see product</button>
+                        <button className='btn-default-3'>see product</button>
                     </div>
 
+                </div>
+            </div>
+
+            <div className="yx1-section">
+                <div className="yx1-earphone-container">
+                    <div className="yx1-earphone-img">
+
+                        <img className='img-desktop' src={images('./home/desktop/image-earphones-yx1.jpg')} alt="" />
+                        <img className='img-tablet' src={images('./home/tablet/image-earphones-yx1.jpg')} alt="" />
+                        <img className='img-mobile' src={images('./home/mobile/image-earphones-yx1.jpg')} alt="" />
+
+                    </div>
+
+                    <div className="yx1-earphone-contain">
+                        <div className="yx1-earphone-content">
+                            <h3>yx1 earphones</h3>
+                            <button className='btn-default-3'>see product</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <SectionBestAudio />

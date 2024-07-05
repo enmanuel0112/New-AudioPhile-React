@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 import '../scss/staticsComponents/staticsComponents.scss';
 import { MdArrowForwardIos } from "react-icons/md";
+
+
+
 
 
 const images = require.context('./../assets');
@@ -23,20 +26,41 @@ const NavLinks = () => {
     )
 }
 
-export function NavBar() {
+export function Header() {
+
+    const [toggleMenu, setToggleMenu] = useState(false);
+
+    const handlerToggle = () => {
+        setToggleMenu(!toggleMenu);
+        console.log(toggleMenu)
+    }
+
     return (
-        <div className='nav'>
-            <div className='nav-container'>
-                <div className='menu-icon'>
-                    <img src={images('./shared/tablet/icon-hamburger.svg')} alt="Menu Icon" />
-                    <h1>audiophile</h1>
-                </div>
-                <NavLinks />
-                <div className='cart'>
-                    <img src={images('./shared/desktop/icon-cart.svg')} alt="" />
+        <>
+            <div className='nav'>
+                <div className='nav-container'>
+                    <div className='menu-icon'>
+                        <img src={images('./shared/tablet/icon-hamburger.svg')} alt="Menu Icon"
+                            onClick={handlerToggle}
+                        />
+                        <h1>audiophile</h1>
+                    </div>
+                    <NavLinks />
+                    <div className='cart'>
+                        <img src={images('./shared/desktop/icon-cart.svg')} alt="" />
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div className={toggleMenu ? 'background-navbar' : ''}></div>
+
+            <div className={toggleMenu ? 'navbar' : 'navbar-hidden'}>
+                <div className="navbar-container">
+                    <Menu />
+                </div>
+            </div>
+
+        </>
     )
 }
 

@@ -1,13 +1,13 @@
 import './scss/App.scss';
-// import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Earphones from './components/earphones';
 import Headphones from './components/headphones';
 import Speakers from './components/speakers';
 import Home from './components/home';
-import { NavBar } from './components/staticsComponents';
-
+import { Header } from './components/staticsComponents';
 import StateComponents from './context/StateComponents';
+
 
 
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <StateComponents>
       <>
-        <NavBar />
+        <Header />
         <Router>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -28,7 +28,6 @@ function App() {
               element={<Speakers />} />
           </Routes>
         </Router>
-
       </>
     </StateComponents>
   );
