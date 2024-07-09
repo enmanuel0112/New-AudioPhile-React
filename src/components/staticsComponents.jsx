@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
-import { Link, BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../scss/staticsComponents/staticsComponents.scss';
 import { MdArrowForwardIos } from "react-icons/md";
-
-
-
-
-
 const images = require.context('./../assets');
 
 
@@ -14,12 +9,11 @@ const NavLinks = () => {
     return (
         <>
             <div className='btn-nav'>
-                <Router>
-                    <Link to='/'>Home</Link>
-                    <Link to='/earphones' >Earphones</Link>
-                    <Link to='/headphones' >Headphones</Link>
-                    <Link to='/speakers' >Speakers</Link>
-                </Router>
+
+                <Link to='/'>Home</Link>
+                <Link to='/earphones' >Earphones</Link>
+                <Link to='/headphones' >Headphones</Link>
+                <Link to='/speakers' >Speakers</Link>
 
             </div>
         </>

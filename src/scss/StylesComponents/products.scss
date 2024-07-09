@@ -1,0 +1,161 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+
+.hero {
+
+    .hero-container {
+        background-color: #000;
+        height: 20vh;
+        width: 100%;
+        display: flex;
+
+        h2 {
+            color: v.$white;
+            margin: auto;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 5rem 0;
+    gap: 8rem;
+
+
+    .products-container {
+        width: 100%;
+        max-width: 80%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+
+        @include m.grid(2, 5rem);
+
+
+        .product-img {
+
+            img {
+                border-radius: 5px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .img-desktop {
+                display: block;
+            }
+
+            .img-tablet {
+                display: none;
+            }
+
+            .img-mobile {
+                display: none;
+            }
+        }
+
+
+
+        .product-details {
+            margin: auto;
+
+            @include m.productStyle();
+
+            .btn-default-1 {
+                @include m.button(12px 30px, v.$white, center, 15px, var(--font-manrope), auto, 0, upperCase, 600);
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+//Responsive
+
+@include m.responsive(1024px) {
+    section {
+        .products-container {
+            width: 100%;
+            max-width: 90%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+
+            @include m.grid(1, 5rem);
+
+            .product-img {
+                .img-desktop {
+                    display: none;
+                }
+
+                .img-tablet {
+                    display: none;
+                }
+
+                .img-mobile {
+                    display: block;
+                }
+            }
+
+            .product-details {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+
+                .new-product {
+                    text-align: center;
+                }
+
+                h2 {
+                    text-align: center;
+                }
+
+                p {
+                    text-align: center;
+                }
+
+
+            }
+
+
+        }
+    }
+}
+
+@include m.responsive(468px) {
+    section {
+        .products-container {
+            width: 100%;
+
+            .product-img {
+                img {
+                    width: 100%;
+                }
+
+                .img-desktop {
+                    display: none;
+                }
+
+                .img-tablet {
+                    display: block;
+                }
+
+                .img-mobile {
+                    display: none;
+                }
+            }
+
+            .product-details {
+                width: 90%;
+            }
+
+        }
+    }
+}

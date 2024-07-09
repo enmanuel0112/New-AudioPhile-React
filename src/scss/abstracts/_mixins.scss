@@ -2,8 +2,6 @@
 // Buttons Mixin
 
 @mixin button ($padding, $color, $center, $fontSize, $fontFami, $width, $margin, $upperCase, $weight, $backgroundColor: v.$orange ) {
-
-
     padding: $padding;
     color: $color;
     text-align: $center;
@@ -16,6 +14,53 @@
     background-color: $backgroundColor;
 
 }
+
+@mixin grid ($colunm, $gap) {
+    display: grid;
+    grid-template-columns: repeat($colunm, 2fr);
+    gap: $gap;
+
+}
+
+@mixin display ($just, $align, $direction) {
+    display: flex;
+    align-items: $align;
+    flex-direction: $direction;
+
+}
+
+
+@mixin productStyle () {
+    @content;
+
+    .new-product {
+        color: v.$orange;
+        text-transform: uppercase;
+        letter-spacing: 0.50em;
+        padding: 1rem 0;
+    }
+
+    h2 {
+        color: v.$black;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 2.5rem;
+    }
+
+    p {
+        color: v.$dark-gray;
+        width: 100%;
+        padding: 2rem 0;
+    }
+}
+
+
+@mixin responsive ($media : 450px) {
+    @media screen and (max-width: $media) {
+        @content;
+    }
+}
+
 
 // Responsive
 

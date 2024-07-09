@@ -1,7 +1,8 @@
 import React from 'react';
 import '../scss/StylesComponents/home.scss'
-import { SectionBestAudio, Footer } from './staticsComponents';
+// import { SectionBestAudio, Footer } from './staticsComponents';
 import { Menu } from './staticsComponents';
+import Layout from './layout';
 
 
 
@@ -9,7 +10,7 @@ const images = require.context('./../assets');
 
 export default function Home() {
     return (
-        <>
+        <Layout>
             <div className="hero">
                 <img className='image-desktop' src={images('./home/desktop/image-hero.jpg')} alt="" />
                 <img className='image-tablet' src={images('./home/tablet/image-header.jpg')} alt="" />
@@ -72,10 +73,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <SectionBestAudio />
-            <Footer />
-
-        </>
+        </Layout>
 
     )
 }
