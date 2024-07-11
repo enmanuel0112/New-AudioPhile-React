@@ -68,11 +68,11 @@ export function Menu() {
                             <div className='image-content'>
                                 <img src={images('./shared/desktop/image-category-thumbnail-headphones.png')} alt="Headphone" />
                                 <h3>  headphones</h3>
-                                <button className='btn-default-3'>shop
+                                <Link to='/headphones' className='btn-default-3'>shop
                                     <span>
                                         {MdArrowForwardIos}
                                     </span>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -81,11 +81,11 @@ export function Menu() {
                             <div className='image-content'>
                                 <img src={images('./shared/desktop/image-category-thumbnail-speakers.png')} alt="Headphone" />
                                 <h3>  spearkers</h3>
-                                <button className='btn-default-3'>shop
+                                <Link to='/speakers' className='btn-default-3'>shop
                                     <span>
                                         {MdArrowForwardIos}
                                     </span>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -94,11 +94,11 @@ export function Menu() {
                             <div className='image-content'>
                                 <img src={images('./shared/desktop/image-category-thumbnail-earphones.png')} alt="Headphone" />
                                 <h3>  earphones</h3>
-                                <button className='btn-default-3'>shop
+                                <Link to='/earphones' className='btn-default-3'>shop
                                     <span>
                                         {MdArrowForwardIos}
                                     </span>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

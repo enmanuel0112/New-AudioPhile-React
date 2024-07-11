@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from './layout';
 import '../scss/StylesComponents/products.scss';
+import {Menu} from './staticsComponents';
 
 
 const images = require.context('./../assets/shared');
@@ -65,6 +66,9 @@ export default function Headphones() {
                             </div>
                         </article>
                     </section>
+
+
+                    <Menu/>
 
                 </>
             </Layout>
