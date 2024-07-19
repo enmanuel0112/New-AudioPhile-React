@@ -2,8 +2,91 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import '../scss/staticsComponents/staticsComponents.scss';
 import { MdArrowForwardIos } from "react-icons/md";
-const images = require.context('./../assets');
 
+
+const Cart = ({ toggleCart }) => {
+
+    return (<>
+
+
+
+        <div className="cart-content">
+            <div className="cart-product-details">
+                <div className="cart-items-number">
+                    <p>Cart (<span>3</span>)</p>
+                    <button>Remove all</button>
+                </div>
+
+                <div className="cart-product">
+                    <div className="cart-product-info">
+                        <img className='img-product' src='/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg' alt="" />
+
+                        <div className="product-info">
+                            <p className='product-name'>xx99 mk ii</p>
+                            <p className='product-price'>$ 2,999</p>
+                        </div>
+                    </div>
+
+
+                    <div className="product-amount">
+                        <button >-</button>
+                        <p>1</p>
+                        <button >+</button>
+
+                    </div>
+                </div>
+                <div className="cart-product">
+                    <div className="cart-product-info">
+                        <img className='img-product' src='/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg' alt="" />
+
+                        <div className="product-info">
+                            <p className='product-name'>xx99 mk ii</p>
+                            <p className='product-price'>$ 2,999</p>
+                        </div>
+                    </div>
+
+
+                    <div className="product-amount">
+                        <button >-</button>
+                        <p>1</p>
+                        <button >+</button>
+
+                    </div>
+                </div>
+
+                <div className="cart-product">
+                    <div className="cart-product-info">
+                        <img className='img-product' src='/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg' alt="" />
+
+                        <div className="product-info">
+                            <p className='product-name'>xx99 mk ii</p>
+                            <p className='product-price'>$ 2,999</p>
+                        </div>
+                    </div>
+
+
+                    <div className="product-amount">
+                        <button >-</button>
+                        <p>1</p>
+                        <button >+</button>
+
+                    </div>
+                </div>
+
+                <div className="products-total">
+                    <p className='total'>total</p>
+                    <p className='total-amount-to-pay'>$ 5,396</p>
+                </div>
+            </div>
+            <div className="btn-checkout">
+                <button className='btn-default-1'>checkout</button>
+            </div>
+        </div>
+
+
+
+    </>)
+}
 
 const NavLinks = () => {
     return (
@@ -23,10 +106,16 @@ const NavLinks = () => {
 export function Header() {
 
     const [toggleMenu, setToggleMenu] = useState(false);
+    const [toggleCart, setToggleCart] = useState(false)
+
 
     const handlerToggle = () => {
         setToggleMenu(!toggleMenu);
-        console.log(toggleMenu)
+    }
+    const handlerCart = () => {
+        console.log('esta funcionando');
+
+        setToggleCart(!toggleCart)
     }
 
     return (
@@ -34,14 +123,15 @@ export function Header() {
             <div className='nav'>
                 <div className='nav-container'>
                     <div className='menu-icon'>
-                        <img src={images('./shared/tablet/icon-hamburger.svg')} alt="Menu Icon"
+                        <img src='/assets/shared/tablet/icon-hamburger.svg' alt="Menu Icon"
                             onClick={handlerToggle}
                         />
                         <h1>audiophile</h1>
                     </div>
                     <NavLinks />
-                    <div className='cart'>
-                        <img src={images('./shared/desktop/icon-cart.svg')} alt="" />
+                    <div className='cart-icon'>
+                        <img src='/assets/shared/desktop/icon-cart.svg' alt=""
+                            onClick={handlerCart} />
                     </div>
                 </div>
             </div>
@@ -53,7 +143,13 @@ export function Header() {
                     <Menu />
                 </div>
             </div>
+            <div className={toggleCart ? 'background-cart' : ''}></div>
+            <div className="cart" >
+                <div className='cart-container' >
+                    <Cart toggleCart={toggleCart} />
 
+                </div>
+            </div>
         </>
     )
 }
@@ -66,7 +162,7 @@ export function Menu() {
                     <div className='menu-contain'>
                         <div className='menu-content'>
                             <div className='image-content'>
-                                <img src={images('./shared/desktop/image-category-thumbnail-headphones.png')} alt="Headphone" />
+                                <img src='/assets/shared/desktop/image-category-thumbnail-headphones.png' alt="Headphone" />
                                 <h3>  headphones</h3>
                                 <Link to='/headphones' className='btn-default-3'>shop
                                     <span>
@@ -79,7 +175,7 @@ export function Menu() {
                     <div className='menu-contain'>
                         <div className='menu-content'>
                             <div className='image-content'>
-                                <img src={images('./shared/desktop/image-category-thumbnail-speakers.png')} alt="Headphone" />
+                                <img src='/assets/shared/desktop/image-category-thumbnail-speakers.png' alt="Headphone" />
                                 <h3>  spearkers</h3>
                                 <Link to='/speakers' className='btn-default-3'>shop
                                     <span>
@@ -92,7 +188,7 @@ export function Menu() {
                     <div className='menu-contain'>
                         <div className='menu-content'>
                             <div className='image-content'>
-                                <img src={images('./shared/desktop/image-category-thumbnail-earphones.png')} alt="Headphone" />
+                                <img src='/assets/shared/desktop/image-category-thumbnail-earphones.png' alt="Headphone" />
                                 <h3>  earphones</h3>
                                 <Link to='/earphones' className='btn-default-3'>shop
                                     <span>
@@ -115,10 +211,10 @@ export function SectionBestAudio() {
 
             <div className="best-audio-container">
                 <div className="best-audio-image-content-mobile">
-                    <img src={images('./shared/mobile/image-best-gear.jpg')} alt="" />
+                    <img src='/assets/shared/mobile/image-best-gear.jpg' alt="" />
                 </div>
                 <div className="best-audio-image-content-tablet">
-                    <img src={images('./shared/tablet/image-best-gear.jpg')} alt="" />
+                    <img src='/assets/shared/tablet/image-best-gear.jpg' alt="" />
                 </div>
                 <div className="best-audio-content">
                     <h2>bringing you the <span>best</span>  audio gear</h2>
@@ -126,7 +222,7 @@ export function SectionBestAudio() {
                     <p>Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.</p>
                 </div>
                 <div className="best-audio-image-content">
-                    <img src={images('./shared/desktop/image-best-gear.jpg')} alt="" />
+                    <img src='/assets/shared/desktop/image-best-gear.jpg' alt="" />
                 </div>
 
             </div>
@@ -153,13 +249,13 @@ export function Footer() {
                     <p>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.</p>
                     <div className='icons-footer'>
                         <div className="icons">
-                            <img src={images('./shared/desktop/icon-facebook.svg')} alt="" />
+                            <img src='/assets/shared/desktop/icon-facebook.svg' alt="" />
                         </div>
                         <div className="icons">
-                            <img src={images('./shared/desktop/icon-twitter.svg')} alt="" />
+                            <img src='/assets/shared/desktop/icon-twitter.svg' alt="" />
                         </div>
                         <div className="icons">
-                            <img src={images('./shared/desktop/icon-instagram.svg')} alt="" />
+                            <img src='/assets/shared/desktop/icon-instagram.svg' alt="" />
                         </div>
                     </div>
                 </div>
@@ -167,13 +263,13 @@ export function Footer() {
                     <p>Copyright 2021. All Rights Reserved</p>
                     <div className='icons-footer-responsive'>
                         <div className="icons">
-                            <img src={images('./shared/desktop/icon-facebook.svg')} alt="" />
+                            <img src='/assets/shared/desktop/icon-facebook.svg' alt="" />
                         </div>
                         <div className="icons">
-                            <img src={images('./shared/desktop/icon-twitter.svg')} alt="" />
+                            <img src='/assets/shared/desktop/icon-twitter.svg' alt="" />
                         </div>
                         <div className="icons">
-                            <img src={images('./shared/desktop/icon-instagram.svg')} alt="" />
+                            <img src='/assets/shared/desktop/icon-instagram.svg' alt="" />
                         </div>
                     </div>
                 </div>
@@ -182,3 +278,4 @@ export function Footer() {
 
     )
 }
+

@@ -1,8 +1,10 @@
 
 import React from 'react';
 import Layout from './layout';
-import {Menu} from './staticsComponents';
-const images = require.context('./../assets/product-yx1-earphones');
+import { Menu } from './staticsComponents';
+import { Link } from 'react-router-dom';
+import data from '../data.json';
+
 
 export default function Earphones() {
     return (
@@ -18,9 +20,9 @@ export default function Earphones() {
                     <section>
                         <article className='products-container'>
                             <div className='product-img'>
-                                <img className='img-desktop' src={images('./desktop/image-category-page-preview.jpg')} alt="" />
-                                <img className='img-tablet' src={images('./mobile/image-category-page-preview.jpg')} alt="" />
-                                <img className='img-mobile' src={images('./tablet/image-category-page-preview.jpg')} alt="" />
+                                <img className='img-desktop' src='/assets/product-yx1-earphones/desktop/image-category-page-preview.jpg' alt="" />
+                                <img className='img-tablet' src='/assets/product-yx1-earphones/mobile/image-category-page-preview.jpg' alt="" />
+                                <img className='img-mobile' src='/assets/product-yx1-earphones/tablet/image-category-page-preview.jpg' alt="" />
                             </div>
                             <div className='product-details'>
                                 <p className='new-product'>new product</p>
@@ -28,15 +30,16 @@ export default function Earphones() {
 
                                 <p>Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.</p>
 
-                                <button className='btn-default-1'>see product</button>
+                                <Link className='btn-default-1' to={`/productDeatils/${data[0].id}`}
+                                >see product</Link>
                             </div>
                         </article>
 
-                    
+
                     </section>
 
 
-                    <Menu/>
+                    <Menu />
 
                 </>
             </Layout>

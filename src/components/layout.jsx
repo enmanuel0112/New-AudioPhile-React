@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer, Header, SectionBestAudio } from './staticsComponents';
+import { Footer, Header, SectionBestAudio, } from './staticsComponents';
 
 function Layout({ children }) {
     return (
@@ -7,6 +7,7 @@ function Layout({ children }) {
 
             <Header />
             {children}
+
             <SectionBestAudio />
             <Footer />
         </div>

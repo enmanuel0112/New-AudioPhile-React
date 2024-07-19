@@ -9,6 +9,7 @@ const StateComponents = ({ children }) => {
     return (
         <contextComponents.Provider
             value={{
+
             }}
         >
             {children}

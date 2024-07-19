@@ -20,6 +20,8 @@
 
 }
 
+
+
 section {
     display: flex;
     flex-direction: column;
@@ -71,6 +73,10 @@ section {
                 border: none;
                 cursor: pointer;
             }
+        }
+
+        .product-img-responsive {
+            display: none;
         }
     }
 }
@@ -124,6 +130,14 @@ section {
 
             }
 
+            .product-img-responsive {
+                display: block;
+            }
+
+            .product-img-desktop {
+                display: none;
+            }
+
 
         }
     }
@@ -155,6 +169,7 @@ section {
             .product-details {
                 width: 90%;
             }
+
 
         }
     }

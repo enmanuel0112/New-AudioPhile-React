@@ -40,6 +40,17 @@
         padding: 1rem 0;
     }
 
+    .product-price {
+        color: v.$black;
+        font-weight: bold
+    }
+
+    .product-img {
+        background-color: aqua;
+        width: 100%;
+        height: auto;
+    }
+
     h2 {
         color: v.$black;
         text-transform: uppercase;
