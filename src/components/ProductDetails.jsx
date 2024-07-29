@@ -1,38 +1,27 @@
 
-// import { useEffect } from 'react'
+import { useContext } from 'react';
+import { contextComponents } from '../context/contextComponents';
+
 import data from '../data.json'
 import Layout from '../components/layout'
 import { Link } from 'react-router-dom';
 import { Menu } from './staticsComponents'
 import '../scss/StylesComponents/productsDetails.scss'
-
 import { useParams } from "react-router-dom"
-import { useState } from 'react'
+
 
 export default function ProductDetails() {
+    const {
+        amount,
+        addingAmount,
+        resAmount,
+        trying
 
-    const [amount, setAmount] = useState(1)
-
+    } = useContext(contextComponents);
 
     const handlerItemToCart = (item) => {
-        console.log('este es el item', item)
+        trying(item)
     }
-
-
-    const addingAmount = () => {
-        setAmount(amount + 1)
-
-    }
-
-    const resAmount = () => {
-        if (amount >= 1) {
-            return setAmount(amount - 1)
-        } else {
-            return amount
-        }
-
-    }
-
     const getLinksPath = (category) => {
         if (category === 'headphones') {
             return '/headphones';
@@ -44,8 +33,6 @@ export default function ProductDetails() {
             return '/home';
         }
     }
-
-
 
     const { id } = useParams()
 
@@ -76,11 +63,11 @@ export default function ProductDetails() {
                                         <div className="add-to-cart">
                                             <div className="input-amount">
                                                 <button onClick={resAmount}>-</button>
-                                                <p value={amount}>{amount}</p>
+                                                <p>{amount}</p>
                                                 <button onClick={addingAmount}>+</button>
                                             </div>
 
-                                            <button className='btn-default-1' onClick={handlerItemToCart(product)}>add to cart</button>
+                                            <button className='btn-default-1' onClick={() => handlerItemToCart(product)}>add to cart</button>
                                         </div>
                                     </div>
                                 </div>
@@ -96,8 +83,8 @@ export default function ProductDetails() {
                                     <div>
                                         {product.includes.map(list => {
                                             return (
-                                                <ul>
-                                                    <li key={product.id}>
+                                                <ul key={list.id}>
+                                                    <li >
                                                         <span className='list-color'>{list.quantity} x</span>
                                                         <span className='list-content'>{list.item}</span>
                                                     </li>

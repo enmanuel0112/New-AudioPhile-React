@@ -1,7 +1,7 @@
 import React from 'react';
 import '../scss/StylesComponents/home.scss'
-// import { SectionBestAudio, Footer } from './staticsComponents';
 import { Menu } from './staticsComponents';
+import { Link } from 'react-router-dom';
 import Layout from './layout';
 
 
@@ -21,7 +21,7 @@ export default function Home() {
                             <h3>new product</h3>
                             <h1>xx99 mark ii<br /> headphones</h1>
                             <p>Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-                            <button className='btn-default-1'>see product</button>
+                            <Link className='btn-default-1' to='/headphones'>see product</Link>
                         </div>
 
                     </div>
@@ -36,7 +36,7 @@ export default function Home() {
                         <div className='zx9-desciption'>
                             <h3>zx9 <br />speaker</h3>
                             <p>Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
-                            <button className='btn-default-2'> see product</button>
+                            <Link className='btn-default-2' to='/speakers'> see product</Link>
                         </div>
                     </div>
                 </div>

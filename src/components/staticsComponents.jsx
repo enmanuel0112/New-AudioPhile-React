@@ -1,90 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
+import { contextComponents } from '../context/contextComponents';
 import { Link } from 'react-router-dom';
 import '../scss/staticsComponents/staticsComponents.scss';
-import { MdArrowForwardIos } from "react-icons/md";
+import { IoIosArrowForward } from "react-icons/io";
 
 
-const Cart = ({ toggleCart }) => {
-
+const Cart = () => {
+    const { cartProduct } = useContext(contextComponents);
+    let total = 0;
     return (<>
-
-
-
         <div className="cart-content">
             <div className="cart-product-details">
                 <div className="cart-items-number">
-                    <p>Cart (<span>3</span>)</p>
+                    <p>Cart (<span>{cartProduct.length}</span>)</p>
                     <button>Remove all</button>
                 </div>
+                <div className="product-added">
+                    {cartProduct.map(items => {
 
-                <div className="cart-product">
-                    <div className="cart-product-info">
-                        <img className='img-product' src='/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg' alt="" />
+                        let totalPrice = items.price;
 
-                        <div className="product-info">
-                            <p className='product-name'>xx99 mk ii</p>
-                            <p className='product-price'>$ 2,999</p>
-                        </div>
-                    </div>
+                        let totalQuantity = items.quantity;
 
+                        total = total + totalQuantity * totalPrice;
 
-                    <div className="product-amount">
-                        <button >-</button>
-                        <p>1</p>
-                        <button >+</button>
+                        return (
+                            <>
+                                <div className="cart-product">
+                                    <div className="cart-product-info">
+                                        <img className='img-product' key={items.id} src={items.image} alt="" />
 
-                    </div>
-                </div>
-                <div className="cart-product">
-                    <div className="cart-product-info">
-                        <img className='img-product' src='/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg' alt="" />
-
-                        <div className="product-info">
-                            <p className='product-name'>xx99 mk ii</p>
-                            <p className='product-price'>$ 2,999</p>
-                        </div>
-                    </div>
+                                        <div className="product-info">
+                                            <p className='product-name' key={items.id}>{items.name}</p>
+                                            <p className='product-price' key={items.id}>{items.price}</p>
+                                        </div>
+                                    </div>
 
 
-                    <div className="product-amount">
-                        <button >-</button>
-                        <p>1</p>
-                        <button >+</button>
+                                    <div className="product-amount">
+                                        <button>-</button>
+                                        <p>{items.quantity}</p>
+                                        <button >+</button>
 
-                    </div>
+                                    </div>
+                                </div>
+                            </>
+                        )
+                    })}
+
                 </div>
 
-                <div className="cart-product">
-                    <div className="cart-product-info">
-                        <img className='img-product' src='/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg' alt="" />
-
-                        <div className="product-info">
-                            <p className='product-name'>xx99 mk ii</p>
-                            <p className='product-price'>$ 2,999</p>
-                        </div>
-                    </div>
-
-
-                    <div className="product-amount">
-                        <button >-</button>
-                        <p>1</p>
-                        <button >+</button>
-
-                    </div>
-                </div>
 
                 <div className="products-total">
                     <p className='total'>total</p>
-                    <p className='total-amount-to-pay'>$ 5,396</p>
+                    <p className='total-amount-to-pay'>$ {total}</p>
                 </div>
             </div>
             <div className="btn-checkout">
-                <button className='btn-default-1'>checkout</button>
+                <Link className='btn-default-1' to='/checkout'>checkout</Link>
             </div>
         </div>
-
-
-
     </>)
 }
 
@@ -113,8 +88,6 @@ export function Header() {
         setToggleMenu(!toggleMenu);
     }
     const handlerCart = () => {
-        console.log('esta funcionando');
-
         setToggleCart(!toggleCart)
     }
 
@@ -143,13 +116,16 @@ export function Header() {
                     <Menu />
                 </div>
             </div>
-            <div className={toggleCart ? 'background-cart' : ''}></div>
-            <div className="cart" >
-                <div className='cart-container' >
-                    <Cart toggleCart={toggleCart} />
 
+            <div className={toggleCart ? 'background-cart' : 'background-cart-hidden'}></div>
+            <div className={toggleCart ? 'cart-active' : 'cart-hidden'}>
+                <div className="cart" >
+                    <div className='cart-container' >
+                        <Cart toggleCart={toggleCart} />
+                    </div>
                 </div>
             </div>
+
         </>
     )
 }
@@ -164,11 +140,15 @@ export function Menu() {
                             <div className='image-content'>
                                 <img src='/assets/shared/desktop/image-category-thumbnail-headphones.png' alt="Headphone" />
                                 <h3>  headphones</h3>
-                                <Link to='/headphones' className='btn-default-3'>shop
-                                    <span>
-                                        {MdArrowForwardIos}
-                                    </span>
-                                </Link>
+                                <div className="btn-content">
+                                    <Link to='/headphones'
+                                        className='btn-default-3'>shop
+                                        <span>
+                                            <IoIosArrowForward />
+                                        </span>
+                                    </Link>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -177,11 +157,15 @@ export function Menu() {
                             <div className='image-content'>
                                 <img src='/assets/shared/desktop/image-category-thumbnail-speakers.png' alt="Headphone" />
                                 <h3>  spearkers</h3>
-                                <Link to='/speakers' className='btn-default-3'>shop
-                                    <span>
-                                        {MdArrowForwardIos}
-                                    </span>
-                                </Link>
+                                <div className="btn-content">
+                                    <Link to='/speakers'
+                                        className='btn-default-3'>shop
+                                        <span>
+                                            <IoIosArrowForward />
+                                        </span>
+                                    </Link>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -190,11 +174,16 @@ export function Menu() {
                             <div className='image-content'>
                                 <img src='/assets/shared/desktop/image-category-thumbnail-earphones.png' alt="Headphone" />
                                 <h3>  earphones</h3>
-                                <Link to='/earphones' className='btn-default-3'>shop
-                                    <span>
-                                        {MdArrowForwardIos}
-                                    </span>
-                                </Link>
+                                <div className="btn-content">
+                                    <Link to='/earphones'
+                                        className='btn-default-3'>shop
+                                        <span>
+                                            <IoIosArrowForward />
+                                        </span>
+                                    </Link>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>

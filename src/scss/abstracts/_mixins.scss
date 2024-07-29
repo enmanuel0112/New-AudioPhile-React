@@ -15,6 +15,8 @@
 
 }
 
+
+
 @mixin grid ($colunm, $gap) {
     display: grid;
     grid-template-columns: repeat($colunm, 2fr);
