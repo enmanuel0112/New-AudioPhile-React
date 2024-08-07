@@ -7,7 +7,9 @@ import Layout from '../components/layout'
 import { Link } from 'react-router-dom';
 import { Menu } from './staticsComponents'
 import '../scss/StylesComponents/productsDetails.scss'
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+
+
 
 
 export default function ProductDetails() {
@@ -15,12 +17,12 @@ export default function ProductDetails() {
         amount,
         addingAmount,
         resAmount,
-        trying
+        addProductToCart,
 
     } = useContext(contextComponents);
 
     const handlerItemToCart = (item) => {
-        trying(item)
+        addProductToCart(item)
     }
     const getLinksPath = (category) => {
         if (category === 'headphones') {
@@ -41,9 +43,10 @@ export default function ProductDetails() {
     return (
         <>
             <Layout>
-                <section>
-                    <div className="product-details-container">
 
+                <section>
+
+                    <div className="product-details-container">
                         <div className="product-details-content">
                             <Link className='go-back-btn'
                                 to={getLinksPath(product.category)}

@@ -21,18 +21,33 @@
         border-bottom: hsl(0, 1%, 26%) 1px solid;
 
         .cart-icon {
+            display: flex;
+            gap: 1rem;
             cursor: pointer;
+
+            img {
+                height: 1.5em;
+                width: 1.5em;
+            }
+
+            .user-icon {
+                color: v.$white;
+                stroke-width: 1;
+                height: 1.5em;
+                width: 1.5em;
+                cursor: pointer;
+                transition: all 0.5s ease-in-out;
+            }
+
+            .user-icon:hover {
+                color: v.$orange;
+                transition: all 0.5s ease-in-out;
+            }
         }
 
-        h1 {
-            color: v.$white;
-            font-size: 2rem;
-            font-family: var(--font-manrope);
-            font-weight: bold;
-        }
+
 
         .btn-nav {
-
             display: flex;
             justify-content: space-evenly;
             gap: 5rem;
@@ -74,18 +89,22 @@
             align-items: center;
             gap: 1rem;
 
-            img {
+            a {
+                text-decoration: none;
+            }
+
+            .menu-hamburger {
                 display: none;
             }
         }
 
-        @include m.ipadPro {
+        @include m.responsive(1024px) {
             .btn-nav {
                 display: none;
             }
 
             .menu-icon {
-                img {
+                .menu-hamburger {
                     display: block;
                     cursor: pointer;
                 }
@@ -95,69 +114,35 @@
 
     }
 
-    @include m.phone {
+    @include m.responsive(480px) {
         .nav-container {
             width: 100%;
-
-            h1 {
-                font-size: 1.5rem;
-                margin: auto;
-            }
 
             .menu-icon {
                 width: 100%;
                 margin: auto;
-                gap: 0;
+                gap: 2;
             }
         }
 
     }
 }
 
-
 //Cart
 .background-cart {
-    background: rgb(0, 0, 0, 0.5);
-    top: 0;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    visibility: visible;
-    z-index: 2;
-    transition: ease-in-out 1s;
+    @include m.background-active
 }
 
 .background-cart-hidden {
-    visibility: hidden;
-    transition: ease-in-out 1s;
-    background: rgb(0, 0, 0, 0.5);
-    top: 0;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 1;
-    transition: ease-in-out 0.5s;
+    @include m.background-hidden
 }
 
 .cart-active {
-    width: 100%;
-    visibility: visible;
-    transform: translateX(0%);
-    transition: all 0.5s ease-in-out;
-    position: absolute;
-    top: 15%;
-    z-index: 2;
+    @include m.content-active
 }
 
 .cart-hidden {
-    position: fixed;
-    width: 100%;
-    top: 15%;
-    visibility: hidden;
-    transform: translateX(100%);
-    transition: all 0.5s ease-in-out;
-    overflow: hidden;
-    z-index: 2;
+    @include m.content-hidden
 }
 
 .cart {
@@ -189,7 +174,6 @@
                 ::-webkit-scrollbar {
                     width: 5px;
                     height: 5px;
-
                 }
 
                 ::-webkit-scrollbar-track {
@@ -215,6 +199,7 @@
                         border: none;
                         background-color: v.$white;
                         color: v.$dark-gray;
+                        cursor: pointer;
                     }
                 }
 
@@ -297,10 +282,9 @@
                 margin: auto;
 
                 .btn-default-1 {
-                    @include m.button(12px 30px, v.$white, center, 15px, var(--font-manrope), 100%, 0, upperCase, 600);
-                    border: none;
-                    cursor: pointer;
                     display: inline-block;
+                    @include m.btn-default-1;
+                    width: 100%;
                 }
             }
 
@@ -400,6 +384,150 @@
     }
 }
 
+//Porifle Drop Down
+.profile-active {
+    @include m.content-active;
+
+}
+
+.profile-hidden {
+    @include m.content-hidden;
+
+}
+
+
+.profile {
+    width: 90%;
+    display: flex;
+    justify-content: end;
+
+    .profile-container {
+        width: 20%;
+        height: auto;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        border-radius: 10px;
+        background-color: white;
+
+        .profile-options {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+
+            .profile-icon {
+                background-color: v.$orange;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+
+                .user-icon {
+                    margin: auto;
+                    font-size: 1.2rem;
+                    color: v.$white;
+                }
+            }
+
+            a {
+                text-align: center;
+                text-transform: uppercase;
+                color: #c9c7c7;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            button {
+                text-align: center;
+                text-transform: uppercase;
+                color: #c9c7c7;
+                text-decoration: none;
+                font-weight: bold;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@include m.responsive(1024px) {
+    .profile-active {
+        top: 13%;
+    }
+
+    .profile-hidden {
+        top: 13%;
+    }
+
+    .profile {
+        .profile-container {
+            width: 40%;
+        }
+    }
+}
+
+@include m.responsive(480px) {
+    .profile-active {
+        top: 20%;
+    }
+
+    .profile-hidden {
+        top: 20%;
+    }
+
+    .profile {
+        .profile-container {
+            width: 90%;
+        }
+    }
+}
+
+//Loading
+
+.loader {
+    display: flex;
+    height: 100vh;
+
+    .loading {
+        margin: auto;
+        width: 45px;
+        height: 45px;
+        aspect-ratio: 1;
+        --c: no-repeat linear-gradient(#d87d4a 0 0);
+        background:
+            var(--c) 0% 50%,
+            var(--c) 50% 50%,
+            var(--c) 100% 50%;
+        background-size: 20% 100%;
+        animation: l1 1s infinite linear;
+    }
+}
+
+
+@keyframes l1 {
+    0% {
+        background-size: 20% 100%, 20% 100%, 20% 100%
+    }
+
+    33% {
+        background-size: 20% 10%, 20% 100%, 20% 100%
+    }
+
+    50% {
+        background-size: 20% 100%, 20% 10%, 20% 100%
+    }
+
+    66% {
+        background-size: 20% 100%, 20% 100%, 20% 10%
+    }
+
+    100% {
+        background-size: 20% 100%, 20% 100%, 20% 100%
+    }
+}
+
 //Menu
 
 .menu-cointainer {
@@ -458,13 +586,7 @@
                     width: 100%;
 
                     .btn-default-3 {
-                        @include m.button(5px, v.$dark-gray, center, 15px, var(--font-manrope), auto, 1rem, upperCase, bold, none);
-                        border: none;
-                        margin: 1rem auto;
-                        cursor: pointer;
-                        text-decoration: none;
-                        display: flex;
-                        gap: 5px;
+                        @include m.btn-default-3
                     }
 
                     .btn-default-3:hover {
@@ -493,7 +615,7 @@
     display: none;
 }
 
-@include m.ipadPro {
+@include m.responsive(820px) {
 
     .background-navbar {
         background: rgb(0, 0, 0, 0.5);
@@ -538,7 +660,7 @@
     }
 }
 
-@include m.ipadMini {
+@include m.responsive(820px) {
     .menu-cointainer {
         width: 100%;
         max-width: 90%;
@@ -547,7 +669,7 @@
     }
 }
 
-@include m.phone {
+@include m.responsive(480px) {
     .menu-cointainer {
         width: 100%;
         max-width: 80%;
@@ -625,7 +747,7 @@
     }
 }
 
-@include m.ipadMini {
+@include m.responsive(820px) {
     .best-audio-container {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -657,7 +779,7 @@
     }
 }
 
-@include m.phone {
+@include m.responsive(480px) {
     .best-audio-container {
         width: 100%;
 
@@ -790,7 +912,7 @@
 
 }
 
-@include m.phone {
+@include m.responsive(480px) {
     .footer {
         .footer-container {
             .footer-navar {
@@ -828,7 +950,7 @@
     }
 }
 
-@include m.ipadMini {
+@include m.responsive(820px) {
     .footer {
 
         .footer-container {

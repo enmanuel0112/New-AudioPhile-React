@@ -1,19 +1,24 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { contextComponents } from '../context/contextComponents';
 import { Link } from 'react-router-dom';
 import '../scss/staticsComponents/staticsComponents.scss';
 import { IoIosArrowForward } from "react-icons/io";
+import { CiUser } from "react-icons/ci";
+// import { FaUserPlus } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { FaSignOutAlt } from "react-icons/fa";
 
 
 const Cart = () => {
-    const { cartProduct } = useContext(contextComponents);
+    const { cartProduct, user } = useContext(contextComponents);
     let total = 0;
+
     return (<>
         <div className="cart-content">
             <div className="cart-product-details">
                 <div className="cart-items-number">
                     <p>Cart (<span>{cartProduct.length}</span>)</p>
-                    <button>Remove all</button>
+                    <button >Remove all</button>
                 </div>
                 <div className="product-added">
                     {cartProduct.map(items => {
@@ -57,10 +62,51 @@ const Cart = () => {
                 </div>
             </div>
             <div className="btn-checkout">
-                <Link className='btn-default-1' to='/checkout'>checkout</Link>
+                <Link className='btn-default-1' to={user ? '/checkout' : '/login'}>checkout</Link>
             </div>
         </div>
     </>)
+}
+
+const Profile = () => {
+    const { user, signOutFromLogin } = useContext(contextComponents);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Simular una llamada asincrónica, por ejemplo, para verificar la autenticación
+        const timer = setTimeout(() => {
+            setLoading(false); // Cambia el estado a 'false' después de la carga
+        }, 2000); // Ajusta el tiempo de carga según sea necesario
+
+        return () => clearTimeout(timer); // Limpia el temporizador si el componente se desmonta
+    }, []);
+
+    if (loading) {
+        return <Loader />
+    }
+    return (
+        <>
+
+            <div className="profile-options">
+                <div className="profile-icon">
+                    {user ? <FaSignOutAlt className='user-icon' /> : <FaUser className='user-icon' />}
+                </div>
+                {user ? <button onClick={() =>
+                    signOutFromLogin()}>sing out</button>
+                    : <Link to='/login'>sign in</Link>
+                }
+            </div>
+
+
+
+        </>
+    )
+}
+
+export const Loader = () => {
+    return <div class="loader">
+        <div className="loading"></div>
+    </div>
 }
 
 const NavLinks = () => {
@@ -82,6 +128,7 @@ export function Header() {
 
     const [toggleMenu, setToggleMenu] = useState(false);
     const [toggleCart, setToggleCart] = useState(false)
+    const [toggleProfile, setToggleProfile] = useState(false);
 
 
     const handlerToggle = () => {
@@ -89,6 +136,10 @@ export function Header() {
     }
     const handlerCart = () => {
         setToggleCart(!toggleCart)
+
+    }
+    const handlerProfile = () => {
+        setToggleProfile(!toggleProfile);
     }
 
     return (
@@ -96,21 +147,25 @@ export function Header() {
             <div className='nav'>
                 <div className='nav-container'>
                     <div className='menu-icon'>
-                        <img src='/assets/shared/tablet/icon-hamburger.svg' alt="Menu Icon"
+                        <img src='/assets/shared/tablet/icon-hamburger.svg' alt="Menu Icon" className='menu-hamburger'
                             onClick={handlerToggle}
                         />
-                        <h1>audiophile</h1>
+                        <img src="/assets/shared/desktop/logo.svg" alt="" className='logo' />
+
                     </div>
                     <NavLinks />
                     <div className='cart-icon'>
+                        <div>
+                            <CiUser className='user-icon' onClick={handlerProfile} />
+                        </div>
                         <img src='/assets/shared/desktop/icon-cart.svg' alt=""
                             onClick={handlerCart} />
+
                     </div>
                 </div>
             </div>
 
             <div className={toggleMenu ? 'background-navbar' : ''}></div>
-
             <div className={toggleMenu ? 'navbar' : 'navbar-hidden'}>
                 <div className="navbar-container">
                     <Menu />
@@ -125,6 +180,16 @@ export function Header() {
                     </div>
                 </div>
             </div>
+            <div className={toggleProfile ? 'background-cart' : 'background-cart-hidden'}></div>
+            <div className={toggleProfile ? 'profile-active' : 'profile-hidden'}>
+                <div className='profile'>
+                    <div className="profile-container">
+                        <Profile />
+                    </div>
+                </div>
+            </div>
+
+
 
         </>
     )

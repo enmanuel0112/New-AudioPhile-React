@@ -10,6 +10,7 @@ import Home from './components/home';
 import Checkout from './components/checkout';
 import StateComponents from './context/StateComponents';
 import ProductDetails from './components/ProductDetails';
+import Login from './components/login';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path='/checkout'
               element={<Checkout />} />
             <Route path="/productDeatils/:id" element={<ProductDetails />} />
+            <Route path='/login' element={<Login />} />
 
           </Routes>
         </Router>

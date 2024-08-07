@@ -59,10 +59,7 @@
             }
 
             .btn-default-1 {
-                @include m.button(12px 30px, v.$white, center, 15px, var(--font-manrope), auto, 0, upperCase, 600);
-                border: none;
-                cursor: pointer;
-                text-decoration: none;
+                @include m.btn-default-1
             }
 
             .btn-default-1:hover {
@@ -129,10 +126,7 @@
                 }
 
                 .btn-default-2 {
-                    @include m.button(12px 30px, v.$white, center, 15px, var(--font-manrope), auto, 0, upperCase, 600, v.$black);
-                    border: none;
-                    cursor: pointer;
-                    text-decoration: none;
+                    @include m.btn-default-2
                 }
 
                 .btn-default-2:hover {
@@ -191,10 +185,7 @@
             }
 
             .btn-default-3 {
-                @include m.button(12px 30px, v.$black, center, 15px, var(--font-manrope), auto, 0, upperCase, 600, transparent);
-                border: solid v.$dark-gray;
-                cursor: pointer;
-                margin: 2rem 0;
+                @include m.btn-default-4;
             }
 
 
@@ -255,10 +246,7 @@
                 }
 
                 .btn-default-3 {
-                    @include m.button(12px 30px, v.$black, center, 15px, var(--font-manrope), auto, 0, upperCase, 600, transparent);
-                    border: solid v.$dark-gray;
-                    cursor: pointer;
-                    margin: 2rem 0;
+                    @include m.btn-default-4
                 }
 
             }
@@ -270,7 +258,7 @@
 //Responsive
 
 //hero responsive
-@include m.ipadPro {
+@include m.responsive(1024px) {
     .hero {
         display: flex;
         width: 100%;
@@ -315,7 +303,7 @@
     }
 }
 
-@include m.phone {
+@include m.responsive(450px) {
     .hero {
 
         .image-tablet {
@@ -354,7 +342,7 @@
 
 //zx9 section responsive
 
-@include m.ipadMini {
+@include m.responsive(1020px) {
     .zx9-section {
         .zx9-container {
             width: 100%;
@@ -384,7 +372,7 @@
     }
 }
 
-@include m.phone {
+@include m.responsive(450px) {
     .zx9-section {
         width: 100%;
 
@@ -416,7 +404,7 @@
 
 // ZX7 responsive
 
-@include m.ipadMini {
+@include m.responsive(1020px) {
     .zx7-section {
         .zx7-container {
             width: 100%;
@@ -449,7 +437,7 @@
     }
 }
 
-@include m.phone {
+@include m.responsive(450px) {
     .zx7-section {
         .zx7-container {
             width: 100%;
@@ -475,7 +463,7 @@
 
 // YX1 Earphone Responsive
 
-@include m.ipadMini {
+@include m.responsive(1020px) {
     .yx1-section {
         .yx1-earphone-container {
             width: 90%;
@@ -516,7 +504,7 @@
     }
 }
 
-@include m.phone {
+@include m.responsive(450px) {
     .yx1-section {
         .yx1-earphone-container {
             width: 100%;

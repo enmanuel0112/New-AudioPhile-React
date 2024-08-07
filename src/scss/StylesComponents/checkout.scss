@@ -1,6 +1,8 @@
 @use '../abstracts/variables' as v;
 @use '../abstracts/mixins' as m;
 
+
+
 .main-checkout {
     background-color: v.$gray;
     width: 100%;
@@ -252,18 +254,17 @@
                     width: 100%;
 
                     .btn-default-1 {
-                        @include m.button(12px, v.$white, center, 15px, var(--font-manrope), 100%, 0, upperCase, 600);
-                        border: none;
-                        cursor: pointer;
+                        @include m.btn-default-1
                     }
                 }
+
+
             }
         }
 
 
     }
 }
-
 
 @include m.responsive(1024px) {
     .main-checkout {

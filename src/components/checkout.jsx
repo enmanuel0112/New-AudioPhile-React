@@ -1,7 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { contextComponents } from '../context/contextComponents';
-import { Header, Footer } from './staticsComponents'
+import { Header, Footer, Loader } from './staticsComponents';
+import { Form } from './login';
 import '../scss/StylesComponents/checkout.scss';
+
 
 function Checkout() {
     const { amount, cartProduct } = useContext(contextComponents);
@@ -13,6 +15,7 @@ function Checkout() {
     return (
         <>
             <Header />
+
             <div className="main-checkout">
                 <div className="checkout">
                     <div className="checkout-container">
@@ -106,36 +109,38 @@ function Checkout() {
                     <div className="cart-summary">
                         <div className="cart-summary-container">
                             <h2>summary</h2>
+                            <div className="cart-summary-content">
+                                {
+                                    cartProduct.map(items => {
 
-                            {
-                                cartProduct.map(items => {
+                                        let totalPrice = items.price;
 
-                                    let totalPrice = items.price;
+                                        let totalQuantity = items.quantity;
 
-                                    let totalQuantity = items.quantity;
+                                        total = total + totalQuantity * totalPrice;
 
-                                    total = total + totalQuantity * totalPrice;
+                                        vat = (total * 10) / 100;
 
-                                    vat = (total * 10) / 100;
+                                        grandTotal = total + shipping;
+                                        return (<>
+                                            <div className="cart-summary-info">
+                                                <div className="cart-summary-content">
+                                                    <img className='img-summary' src={items.image} alt="" />
 
-                                    grandTotal = total + shipping;
-                                    return (<>
-                                        <div className="cart-summary-info">
-                                            <div className="cart-summary-content">
-                                                <img className='img-summary' src={items.image} alt="" />
-
-                                                <div className="product-info">
-                                                    <p className='product-name'>{items.name}</p>
-                                                    <p className='product-price'>$ {items.price}</p>
+                                                    <div className="product-info">
+                                                        <p className='product-name'>{items.name}</p>
+                                                        <p className='product-price'>$ {items.price}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="product-summary-amount">
+                                                    <p> x {items.quantity}</p>
                                                 </div>
                                             </div>
-                                            <div className="product-summary-amount">
-                                                <p> x {items.quantity}</p>
-                                            </div>
-                                        </div>
-                                    </>)
-                                })
-                            }
+                                        </>)
+                                    })
+                                }
+                            </div>
+
 
 
                             <div className="total">
@@ -163,11 +168,31 @@ function Checkout() {
                     </div>
                 </div>
             </div>
-
-
             <Footer />
         </>
     )
 }
 
-export default Checkout
+function UserAuthenticated() {
+    const { user } = useContext(contextComponents);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        // Simular una llamada asincrónica, por ejemplo, para verificar la autenticación
+        const timer = setTimeout(() => {
+            setLoading(false); // Cambia el estado a 'false' después de la carga
+        }, 2000); // Ajusta el tiempo de carga según sea necesario
+
+        return () => clearTimeout(timer); // Limpia el temporizador si el componente se desmonta
+    }, []);
+
+    if (loading) {
+        return <Loader />; // Muestra el componente de carga mientras el estado de carga es 'true'
+    }
+    return (
+        <>
+            {user ? <Checkout /> : <Form />}
+        </>
+    )
+
+}
+export default UserAuthenticated

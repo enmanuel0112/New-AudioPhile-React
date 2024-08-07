@@ -1,21 +1,122 @@
 @use '/src/scss/abstracts/variables' as v;
 // Buttons Mixin
 
-@mixin button ($padding, $color, $center, $fontSize, $fontFami, $width, $margin, $upperCase, $weight, $backgroundColor: v.$orange ) {
-    padding: $padding;
-    color: $color;
-    text-align: $center;
-    font-size: $fontSize;
-    font-weight: $weight;
-    font-family: $fontFami;
-    width: $width;
-    margin: $margin;
-    text-transform: $upperCase;
-    background-color: $backgroundColor;
 
+
+@mixin btn-default-1 {
+    padding: 12px 30px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-manrope);
+    width: auto;
+    margin: 0;
+    text-transform: upperCase;
+    background-color: #d87d4a;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@mixin btn-default-2 {
+    padding: 12px 30px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-manrope);
+    width: auto;
+    margin: 0;
+    text-transform: upperCase;
+    background-color: #101010;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@mixin btn-default-3 {
+    padding: 5px;
+    color: #a09e9e;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: var(--font-manrope);
+    width: auto;
+    margin: 1rem;
+    text-transform: upperCase;
+    background-color: none;
+    border: none;
+    margin: 1rem auto;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+}
+
+@mixin btn-default-4 {
+    padding: 12px 30px;
+    color: #101010;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-manrope);
+    width: auto;
+    margin: 0;
+    text-transform: upperCase;
+    background-color: transparent;
+    border: solid #a09e9e;
+    cursor: pointer;
+    margin: 2rem 0;
 }
 
 
+
+//
+
+@mixin background-active () {
+    background: rgb(0, 0, 0, 0.5);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    visibility: visible;
+    z-index: 2;
+    transition: ease-in-out 1s;
+}
+
+@mixin background-hidden () {
+    visibility: hidden;
+    transition: ease-in-out 1s;
+    background: rgb(0, 0, 0, 0.5);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    transition: ease-in-out 0.5s;
+}
+
+@mixin content-active () {
+    width: 100%;
+    visibility: visible;
+    transform: translateX(0%);
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    top: 15%;
+    z-index: 2;
+}
+
+@mixin content-hidden () {
+    position: fixed;
+    width: 100%;
+    top: 15%;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    z-index: 2;
+}
 
 @mixin grid ($colunm, $gap) {
     display: grid;
@@ -67,30 +168,77 @@
     }
 }
 
+// login
 
-@mixin responsive ($media : 450px) {
-    @media screen and (max-width: $media) {
-        @content;
+@mixin formLogin() {
+    @content;
+
+    form {
+        background-color: v.$white;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+        border-radius: 10px;
+
+        label {
+            display: flex;
+            flex-direction: column;
+
+            p {
+                font-weight: bold;
+                font-size: 12px;
+            }
+
+            .input {
+                padding: 1rem 0;
+                display: flex;
+                height: 70px;
+                gap: 5px;
+
+                input {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 5px;
+                    border: solid 1px #c9c7c7;
+                    padding: 10px;
+                }
+
+                input:focus {
+                    outline: 1px solid v.$orange;
+                    box-shadow: 0 0 10px v.$orange;
+                    transition: all 0.2s ease-in-out;
+                }
+
+                span {
+                    background-color: v.$orange;
+                    height: auto;
+                    border-radius: 5px;
+                    padding: 10px;
+
+                    .icon {
+                        color: v.$white;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+
+            .input-errors {
+                background: none;
+                color: red;
+                font-size: 12px;
+            }
+        }
+
+
     }
 }
-
 
 // Responsive
 
-@mixin phone {
-    @media (max-width: 450px) {
-        @content;
-    }
-}
-
-@mixin ipadMini {
-    @media (max-width: 1020px) {
-        @content;
-    }
-}
-
-@mixin ipadPro {
-    @media (max-width: 1024px) {
+@mixin responsive ($media : 450px) {
+    @media screen and (max-width: $media) {
         @content;
     }
 }

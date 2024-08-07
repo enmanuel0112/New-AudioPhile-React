@@ -7,13 +7,11 @@
     display: flex;
     flex-direction: column;
 
-
     .product-details-content {
         width: 80%;
         margin: auto;
 
         //Go back button
-
 
         .go-back-btn {
             width: 80%;
@@ -108,9 +106,7 @@
                 }
 
                 .btn-default-1 {
-                    @include m.button(12px 30px, v.$white, center, 15px, var(--font-manrope), 50%, 0, upperCase, 600);
-                    border: none;
-                    cursor: pointer;
+                    @include m.btn-default-1
                 }
             }
         }
@@ -224,8 +220,6 @@
                     display: none;
                 }
             }
-
-
         }
 
         //Others items
@@ -282,9 +276,7 @@
                             }
 
                             .btn-default-1 {
-                                @include m.button(12px 30px, v.$white, center, 15px, var(--font-manrope), auto, 0, upperCase, 600);
-                                border: none;
-                                cursor: pointer;
+                                @include m.btn-default-1
                             }
                         }
                     }

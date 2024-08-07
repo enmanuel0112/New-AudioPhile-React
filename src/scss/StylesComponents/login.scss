@@ -1,0 +1,194 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.login-section {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+
+    .login-container {
+        width: 80%;
+        height: auto;
+        margin: auto;
+        display: grid;
+        @include m.grid(2, 2rem);
+
+        .login-image {
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .slogan {
+                position: absolute;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 5rem;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                h3 {
+                    color: v.$white;
+                    font-size: 2rem;
+                    text-transform: uppercase;
+                    text-align: center;
+                    margin-bottom: 2rem;
+                }
+
+                p {
+                    width: 80%;
+                    color: #c9c7c7;
+                    text-align: center;
+                    margin: auto;
+
+                    span {
+                        color: v.$orange;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        .login-image::before {
+            content: '';
+            position: absolute;
+            background: rgb(0, 0, 0, 0.5);
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        h3 {
+            width: 100%;
+            text-align: center;
+            color: #c9c7c7;
+
+            span {
+                margin-left: 10px;
+
+                button {
+                    border: none;
+                    color: v.$orange;
+                    background-color: transparent;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+            }
+        }
+
+
+
+    }
+}
+
+
+.login-form {
+    padding: 3rem;
+    background-color: v.$gray;
+
+    .logo {
+        width: 100%;
+        display: flex;
+
+        img {
+            width: auto;
+            margin: auto;
+
+        }
+    }
+
+    .login {
+        display: block;
+        @include m.formLogin();
+
+        .btn-login {
+            @include m.btn-default-1;
+            display: inline-block;
+            width: 80%;
+            margin: auto;
+        }
+
+    }
+
+    .login-content {
+        padding: 0 2rem;
+
+        h4 {
+            font-weight: bold;
+            padding: 1rem 0;
+        }
+
+        p {
+            color: #c9c7c7;
+            font-size: 12px;
+            margin-bottom: 3rem;
+
+            span {
+                color: v.$orange;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .input-active {
+        display: block;
+    }
+
+    .input-hidden {
+        display: none;
+    }
+}
+
+@include m.responsive(1024px) {
+    .login-section {
+        height: auto;
+        padding: 5rem;
+
+
+        .login-container {
+            @include m.grid(1, 2rem);
+
+            .login-image {
+                .slogan {
+
+
+                    p {
+                        width: 100%;
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include m.responsive(480px) {
+    .login-section {
+        height: auto;
+        padding: 1rem;
+
+        .login-container {
+            @include m.grid(1, 2rem);
+            width: 100%;
+
+            .login-form {
+                padding: 1rem;
+            }
+
+            .login-image {
+                display: flex;
+
+                .slogan {
+                    padding: 1rem;
+                    margin: auto;
+                    bottom: 25%;
+                }
+            }
+        }
+    }
+}
