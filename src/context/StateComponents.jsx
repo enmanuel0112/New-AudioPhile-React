@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { contextComponents } from './contextComponents';
 import '../scss/staticsComponents/stateComponents.scss';
-import appFirebase from '../credentials.js/credentials';
+import appFirebase, { db } from '../credentials.js/credentials';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 const auth = getAuth(appFirebase);
 
@@ -66,10 +66,10 @@ const StateComponents = ({ children }) => {
         } else {
             setUser(null);
         }
+
     })
 
     function signOutFromLogin() {
-
         return signOut(auth);
     }
 
@@ -85,7 +85,8 @@ const StateComponents = ({ children }) => {
                 cartProduct,
                 user,
                 auth,
-                signOutFromLogin
+                signOutFromLogin,
+                db
             }}
         >
             {children}

@@ -17,7 +17,7 @@ const Cart = () => {
         <div className="cart-content">
             <div className="cart-product-details">
                 <div className="cart-items-number">
-                    <p>Cart (<span>{cartProduct.length}</span>)</p>
+                    <p>Cart (<span key={cartProduct.id}>{cartProduct.length}</span>)</p>
                     <button >Remove all</button>
                 </div>
                 <div className="product-added">
@@ -91,10 +91,12 @@ const Profile = () => {
                 <div className="profile-icon">
                     {user ? <FaSignOutAlt className='user-icon' /> : <FaUser className='user-icon' />}
                 </div>
+
                 {user ? <button onClick={() =>
                     signOutFromLogin()}>sing out</button>
                     : <Link to='/login'>sign in</Link>
                 }
+
             </div>
 
 
@@ -104,7 +106,7 @@ const Profile = () => {
 }
 
 export const Loader = () => {
-    return <div class="loader">
+    return <div className="loader">
         <div className="loading"></div>
     </div>
 }

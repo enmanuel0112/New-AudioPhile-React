@@ -84,17 +84,17 @@ export default function ProductDetails() {
                                 <div className="features-list">
                                     <h2>in the box</h2>
                                     <div>
-                                        {product.includes.map(list => {
-                                            return (
-                                                <ul key={list.id}>
-                                                    <li >
-                                                        <span className='list-color'>{list.quantity} x</span>
-                                                        <span className='list-content'>{list.item}</span>
-                                                    </li>
-                                                </ul>
-                                            )
+                                        <ul >
+                                            {product.includes.map((list) => {
+                                                <li key={list.item} >
+                                                    <span className='list-color'>{list.quantity} x</span>
+                                                    <span className='list-content'>{list.item}</span>
+                                                </li>
+                                            }
 
-                                        })}
+                                            )}
+
+                                        </ul>
                                     </div>
 
                                 </div>
@@ -126,17 +126,20 @@ export default function ProductDetails() {
                                 <div className="others-items-container">
                                     <h2>you may also like</h2>
                                     <div className="others-items-content">
-
                                         {product.others.map((items) => {
                                             return <>
                                                 <div className='others-item'>
-                                                    <img className='image-desktop' src={items.image.desktop} alt="" />
-                                                    <img className='image-tablet' src={items.image.tablet} alt="" />
-                                                    <img className='image-mobile' src={items.image.mobile} alt="" />
+                                                    <li key={items.name}>
+                                                        <img className='image-desktop' src={items.image.desktop} alt="" />
+                                                        <img className='image-tablet' src={items.image.tablet} alt="" />
+                                                        <img className='image-mobile' src={items.image.mobile} alt="" />
+                                                    </li>
+
                                                     <div className="other-item-content">
-                                                        <p>{items.name}</p>
+                                                        <p key={items.name} >{items.name}</p>
                                                         <Link className='btn-default-1'
                                                             to={items.slug.includes('headphones') ? '/headphones' : '/speakers'}
+
                                                         >see product</Link>
                                                     </div>
 
