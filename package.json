@@ -2,7 +2,6 @@
   "name": "audio-phile",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://enmanuel0112.github.io/New-AudioPhile-React",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -44,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "http://enmanuel0112.github.io/New-AudioPhile-React",
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
