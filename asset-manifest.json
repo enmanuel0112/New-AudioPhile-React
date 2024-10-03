@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/New-AudioPhile-React/static/css/main.b401c589.css",
+    "main.js": "/New-AudioPhile-React/static/js/main.7674c504.js",
+    "index.html": "/New-AudioPhile-React/index.html",
+    "main.b401c589.css.map": "/New-AudioPhile-React/static/css/main.b401c589.css.map",
+    "main.7674c504.js.map": "/New-AudioPhile-React/static/js/main.7674c504.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b401c589.css",
+    "static/js/main.7674c504.js"
+  ]
+}
