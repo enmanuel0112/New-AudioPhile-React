@@ -1,5 +1,5 @@
 
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { contextComponents } from '../context/contextComponents';
 
 import data from '../data.json'
@@ -20,10 +20,26 @@ export default function ProductDetails() {
         addProductToCart,
 
     } = useContext(contextComponents);
+    const [addedProductModal, setAddedProductModal] = useState(false);
+    const [addedProduct, setAddedProduct] = useState(null);
 
     const handlerItemToCart = (item) => {
         addProductToCart(item)
+        setAddedProductModal(true);
+        setAddedProduct(item);
+        console.log(addedProduct)
     }
+
+
+    useEffect(() => {
+        if (addedProductModal) {
+            const timer = setTimeout(() => {
+                setAddedProductModal(false);
+            }, 1000)
+            return () => clearTimeout(timer);
+        }
+    }, [addedProductModal]);
+
     const getLinksPath = (category) => {
         if (category === 'headphones') {
             return '/headphones';
@@ -42,10 +58,25 @@ export default function ProductDetails() {
 
     return (
         <>
+
             <Layout>
+                {addedProductModal && (
+                    <>
+                        <div className={addedProductModal ? 'background-cart' : 'background-cart-hidden'}></div>
 
+                        <div className={`added-product-modal ${addedProductModal ? 'show' : 'hidden'}`}>
+
+                            <div className='added-product-modal-content'>
+                                <p><span>{addedProduct.nameCart}</span></p>
+                                <p> added to cart</p>
+
+                            </div>
+
+                        </div>
+                    </>
+
+                )}
                 <section>
-
                     <div className="product-details-container">
                         <div className="product-details-content">
                             <Link className='go-back-btn'
@@ -86,12 +117,11 @@ export default function ProductDetails() {
                                     <div>
                                         <ul >
                                             {product.includes.map((list) => {
-                                                <li key={list.item} >
+                                                return <li key={list.item} >
                                                     <span className='list-color'>{list.quantity} x</span>
                                                     <span className='list-content'>{list.item}</span>
                                                 </li>
                                             }
-
                                             )}
 
                                         </ul>
@@ -129,14 +159,14 @@ export default function ProductDetails() {
                                         {product.others.map((items) => {
                                             return <>
                                                 <div className='others-item'>
-                                                    <li key={items.name}>
+                                                    <li key={items.id}>
                                                         <img className='image-desktop' src={items.image.desktop} alt="" />
                                                         <img className='image-tablet' src={items.image.tablet} alt="" />
                                                         <img className='image-mobile' src={items.image.mobile} alt="" />
                                                     </li>
 
                                                     <div className="other-item-content">
-                                                        <p key={items.name} >{items.name}</p>
+                                                        <p key={items.id} >{items.name}</p>
                                                         <Link className='btn-default-1'
                                                             to={items.slug.includes('headphones') ? '/headphones' : '/speakers'}
 

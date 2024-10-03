@@ -132,17 +132,33 @@ export function Header() {
     const [toggleCart, setToggleCart] = useState(false)
     const [toggleProfile, setToggleProfile] = useState(false);
 
+    const closeOtherComponents = () => {
+        setToggleProfile(false);
+        setToggleMenu(false);
+        setToggleCart(false);
+    }
 
     const handlerToggle = () => {
+        closeOtherComponents();
         setToggleMenu(!toggleMenu);
     }
+
     const handlerCart = () => {
+        closeOtherComponents();
         setToggleCart(!toggleCart)
 
     }
+    /*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Handles the toggling of the profile menu. If the profile menu is open, it
+     * will be closed and the cart and menu will be closed if they are open.
+     */
+    /******  99075f56-18c7-4644-91de-093f4998b0ad  *******/
     const handlerProfile = () => {
+        closeOtherComponents();
         setToggleProfile(!toggleProfile);
     }
+
 
     return (
         <>
