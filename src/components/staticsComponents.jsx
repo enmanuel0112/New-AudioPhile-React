@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { contextComponents } from '../context/contextComponents';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../scss/staticsComponents/staticsComponents.scss';
 import { IoIosArrowForward } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
@@ -116,10 +116,10 @@ const NavLinks = () => {
         <>
             <div className='btn-nav'>
 
-                <Link to='/'>Home</Link>
-                <Link to='/earphones' >Earphones</Link>
-                <Link to='/headphones' >Headphones</Link>
-                <Link to='/speakers' >Speakers</Link>
+                <NavLink to='/'>Home</NavLink>
+                <NavLink to='/earphones' >Earphones</NavLink>
+                <NavLink to='/headphones' >Headphones</NavLink>
+                <NavLink to='/speakers' >Speakers</NavLink>
 
             </div>
         </>
@@ -148,17 +148,21 @@ export function Header() {
         setToggleCart(!toggleCart)
 
     }
-    /*************  ✨ Codeium Command ⭐  *************/
-    /**
-     * Handles the toggling of the profile menu. If the profile menu is open, it
-     * will be closed and the cart and menu will be closed if they are open.
-     */
-    /******  99075f56-18c7-4644-91de-093f4998b0ad  *******/
+
     const handlerProfile = () => {
         closeOtherComponents();
         setToggleProfile(!toggleProfile);
     }
 
+    useEffect(() => {
+        const links = document.querySelectorAll('a[href]');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+    }, []);
 
     return (
         <>
@@ -311,10 +315,10 @@ export function Footer() {
                     <h2>audiophile</h2>
 
                     <div className='footer-links'>
-                        <Link to='/'>Home</Link>
-                        <Link to='/earphones' >Earphones</Link>
-                        <Link to='/headphones' >Headphones</Link>
-                        <Link to='/speakers' >Speakers</Link>
+                        <NavLink to='/'>Home</NavLink>
+                        <NavLink to='/earphones' >Earphones</NavLink>
+                        <NavLink to='/headphones' >Headphones</NavLink>
+                        <NavLink to='/speakers' >Speakers</NavLink>
                     </div>
                 </div>
                 <div className='footer-contain'>

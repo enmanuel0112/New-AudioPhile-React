@@ -68,7 +68,7 @@ const StateComponents = ({ children }) => {
         }
 
     })
-
+    console.log(user)
     function signOutFromLogin() {
         return signOut(auth);
     }

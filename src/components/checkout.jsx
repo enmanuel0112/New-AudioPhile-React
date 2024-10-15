@@ -48,11 +48,11 @@ function Checkout() {
 
             gettingData.forEach((doc) => {
 
-                console.log(doc.id)
+                console.log('what is this ', doc)
             })
 
             setOrderId(orderInfo);
-
+            console.log('show me this', orderId)
 
         } catch (error) {
             console.log(error)
@@ -62,9 +62,7 @@ function Checkout() {
 
 
     }
-    function gettingInfo() {
-        console.log(orderId)
-    }
+
 
 
     return (
@@ -179,8 +177,8 @@ function Checkout() {
                                     <p className='payment-parraf'>Payment Method</p>
                                     <div className="payment-method">
                                         <label htmlFor="">
-                                            <input type="radio"
-                                                {...register(' country', {
+                                            <input type="radio" name='permission' id='e-money'
+                                                {...register(' payment method', {
                                                     required: {
                                                         value: true,
                                                         message: ' country is required'
@@ -192,7 +190,16 @@ function Checkout() {
                                         </label>
 
                                         <label htmlFor="">
-                                            <input type="radio" />
+                                            <input type="radio" name='permission' id='cash'
+                                                {...register(' payment method', {
+                                                    required: {
+                                                        value: true,
+                                                        message: ' country is required'
+                                                    }
+                                                })
+                                                }
+
+                                            />
                                             <p>Cash on Delivery</p>
                                         </label>
                                     </div>
@@ -270,9 +277,7 @@ function Checkout() {
                                 </div>
                                 <div className="btn">
                                     <button className="btn-default-1"
-                                        onClick={() => {
-                                            gettingInfo()
-                                        }}
+
                                     >continue & pay</button>
                                 </div>
                             </div>

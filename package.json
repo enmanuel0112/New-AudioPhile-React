@@ -43,7 +43,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://enmanuel0112.github.io/New-AudioPhile-React",
   "devDependencies": {
     "gh-pages": "^6.1.1"
   }

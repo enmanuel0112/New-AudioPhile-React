@@ -249,22 +249,41 @@ export function Form() {
 
 function UserAuthenticated() {
     const { user } = useContext(contextComponents);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
-        // Simular una llamada asincrónica, por ejemplo, para verificar la autenticación
-        const timer = setTimeout(() => {
-            setLoading(false); // Cambia el estado a 'false' después de la carga
-        }, 2000); // Ajusta el tiempo de carga según sea necesario
 
-        return () => clearTimeout(timer); // Limpia el temporizador si el componente se desmonta
+        const timer = setTimeout(() => {
+            setLoading(true);
+        }, 2000);
+
+        return () => clearTimeout(timer);
     }, []);
 
-    if (loading) {
-        return <Loader />; // Muestra el componente de carga mientras el estado de carga es 'true'
-    }
+
+    const handleSignIn = () => {
+
+        if (!loading) {
+            return <Loader />;
+        }
+
+        return <Home />
+        // Sign in logic here
+    };
+
+    const handleSignOut = () => {
+
+        if (!loading) {
+            return <Loader />;
+        }
+        return <Form />
+    };
+
+
+
+
     return (
         <>
-            {user ? <Loader /> && <Home /> : <Form />}
+            {user ? handleSignIn() : handleSignOut()}
         </>
     )
 
