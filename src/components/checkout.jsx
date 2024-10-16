@@ -8,9 +8,11 @@ import '../scss/StylesComponents/checkout.scss';
 
 
 function Checkout() {
+    //hooks 
     const { db, cartProduct } = useContext(contextComponents);
     const { orderId, setOrderId } = useState([]);
-
+    const [paymentMethodEmoney, setPaymentMethodEmoney] = useState('');
+    
 
     let total = 0;
     let shipping = 50;
@@ -24,6 +26,7 @@ function Checkout() {
 
     } = useForm()
 
+    //functions
 
     const onSubmit = async (data) => {
 
@@ -48,11 +51,11 @@ function Checkout() {
 
             gettingData.forEach((doc) => {
 
-                console.log('what is this ', doc)
+                
             })
 
             setOrderId(orderInfo);
-            console.log('show me this', orderId)
+        
 
         } catch (error) {
             console.log(error)
@@ -63,6 +66,13 @@ function Checkout() {
 
     }
 
+    function handlerPayment  (emoney) {
+        setPaymentMethodEmoney(emoney.target.value);
+     
+    }
+
+    console.log('1', paymentMethodEmoney)
+   
 
 
     return (
@@ -178,6 +188,8 @@ function Checkout() {
                                     <div className="payment-method">
                                         <label htmlFor="">
                                             <input type="radio" name='permission' id='e-money'
+                                            value='e-money'
+                                            
                                                 {...register(' payment method', {
                                                     required: {
                                                         value: true,
@@ -185,12 +197,17 @@ function Checkout() {
                                                     }
                                                 })}
 
+                                                checked={paymentMethodEmoney === 'e-money'}
+                                                onChange={handlerPayment}
+
                                             />
                                             <p>e-Money</p>
                                         </label>
 
                                         <label htmlFor="">
-                                            <input type="radio" name='permission' id='cash'
+                                            <input type="radio" name='permission'
+                                            id='cash'
+                                            value= 'cash'
                                                 {...register(' payment method', {
                                                     required: {
                                                         value: true,
@@ -198,6 +215,9 @@ function Checkout() {
                                                     }
                                                 })
                                                 }
+                                                checked={paymentMethodEmoney === 'cash'}
+                                               
+                                                onChange={handlerPayment}
 
                                             />
                                             <p>Cash on Delivery</p>
@@ -205,19 +225,19 @@ function Checkout() {
                                     </div>
                                 </div>
 
-                                <div className="e-money">
+                            {paymentMethodEmoney === 'e-money' ? (
+                                    <div className='e-money-active'>     
                                     <label htmlFor="">
                                         <span>e-Money Number</span>
                                         <input type="number" />
                                     </label>
-
+    
                                     <label htmlFor="" >
                                         <span> e-Money PIN</span>
                                         <input type="number" />
                                     </label>
-
-
                                 </div>
+                            ) : ''}
 
 
                             </div>
