@@ -75,6 +75,11 @@ const StateComponents = ({ children }) => {
 
     //Form
 
+
+    //CheckOut
+
+    const [eMoneyIsString, setEMoneyIsString] = useState(null);
+    console.log('verifica y convierte', eMoneyIsString)
     return (
         <contextComponents.Provider
             value={{
@@ -86,7 +91,9 @@ const StateComponents = ({ children }) => {
                 user,
                 auth,
                 signOutFromLogin,
-                db
+                db,
+                eMoneyIsString,
+                setEMoneyIsString
             }}
         >
             {children}

@@ -2,16 +2,17 @@ import React, { useContext, useEffect, useState, } from 'react'
 import { contextComponents } from '../context/contextComponents';
 import { Header, Footer, Loader } from './staticsComponents';
 import { Form } from './login';
-import { useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import '../scss/StylesComponents/checkout.scss';
 
 
 function Checkout() {
     //hooks 
-    const { db, cartProduct } = useContext(contextComponents);
+    const { db, cartProduct, setEMoneyIsString } = useContext(contextComponents);
     const { orderId, setOrderId } = useState([]);
     const [paymentMethodEmoney, setPaymentMethodEmoney] = useState('');
+    
     
 
     let total = 0;
@@ -61,24 +62,27 @@ function Checkout() {
             console.log(error)
         }
 
-
-
-
     }
 
     function handlerPayment  (emoney) {
         setPaymentMethodEmoney(emoney.target.value);
-     
     }
 
-    console.log('1', paymentMethodEmoney)
+    useEffect( () =>{
+    if(paymentMethodEmoney === 'e-money'){
+            setEMoneyIsString(true);
+    }else{
+        setEMoneyIsString(false)
+    }
+    }, [paymentMethodEmoney, setEMoneyIsString ]);
+
+   
    
 
 
     return (
         <>
             <Header />
-
             <div className="main-checkout">
                 <div className="checkout">
 
@@ -227,14 +231,32 @@ function Checkout() {
 
                             {paymentMethodEmoney === 'e-money' ? (
                                     <div className='e-money-active'>     
-                                    <label htmlFor="">
+                                    <label htmlFor="e-money">
                                         <span>e-Money Number</span>
-                                        <input type="number" />
+                                        <input type="number" 
+                                        {...register('e-money-number', {
+                                                    required: {
+                                                        value: true,
+                                                        message: ' this field must be fill'
+                                                    }
+                                                })
+                                                }
+                                        
+                                        />
                                     </label>
     
-                                    <label htmlFor="" >
+                                    <label htmlFor="e-money-pin" >
                                         <span> e-Money PIN</span>
-                                        <input type="number" />
+                                        <input type="number"
+                                        {...register('e-money-pin', {
+                                            required: {
+                                                value: true,
+                                                message: ' this field must be fill'
+                                            }
+                                        })
+                                        }
+                                
+                                        />
                                     </label>
                                 </div>
                             ) : ''}
