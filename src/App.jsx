@@ -1,8 +1,6 @@
 import './scss/App.scss';
 import React from 'react';
-
-
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
 import Earphones from './components/earphones';
 import Headphones from './components/headphones';
 import Speakers from './components/speakers';
@@ -31,7 +29,6 @@ function App() {
               element={<Checkout />} />
             <Route path="/productDeatils/:id" element={<ProductDetails />} />
             <Route path='/login' element={<Login />} />
-
           </Routes>
         </Router>
       </>
