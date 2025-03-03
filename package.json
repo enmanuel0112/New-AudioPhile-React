@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.1",
-    "homepage": "https://enmanuel0112.github.io/New-AudioPhile-React"
+    "homepage": "https://enmanuel0112.github.io/New-AudioPhile-React/"
 
   }
 }
