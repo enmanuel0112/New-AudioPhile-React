@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/New-AudioPhile-React/static/css/main.b1338140.css",
-    "main.js": "/New-AudioPhile-React/static/js/main.529639e8.js",
+    "main.js": "/New-AudioPhile-React/static/js/main.42a5bad7.js",
     "index.html": "/New-AudioPhile-React/index.html",
     "main.b1338140.css.map": "/New-AudioPhile-React/static/css/main.b1338140.css.map",
-    "main.529639e8.js.map": "/New-AudioPhile-React/static/js/main.529639e8.js.map"
+    "main.42a5bad7.js.map": "/New-AudioPhile-React/static/js/main.42a5bad7.js.map"
   },
   "entrypoints": [
     "static/css/main.b1338140.css",
-    "static/js/main.529639e8.js"
+    "static/js/main.42a5bad7.js"
   ]
 }
