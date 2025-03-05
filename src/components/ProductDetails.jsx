@@ -84,9 +84,9 @@ export default function ProductDetails() {
                             >Go Back</Link>
                             <article className='product-container'>
                                 <div className='product-img'>
-                                    <img className='img-desktop' src={product.image.desktop} alt="headphone" />
-                                    <img className='img-tablet' src={product.image.tablet} alt="headphone" />
-                                    <img className='img-mobile' src={product.image.mobile} alt="headphone" />
+                                    <img className='img-desktop' src={`${process.env.PUBLIC_URL}${product.image.desktop}`} alt="headphone" />
+                                    <img className='img-tablet' src={`${process.env.PUBLIC_URL}${product.image.tablet}`} alt="headphone" />
+                                    <img className='img-mobile' src={`${process.env.PUBLIC_URL}${product.image.mobile}`} alt="headphone" />
                                 </div>
                                 <div className='product-details'>
                                     <p className='new-product'>new product</p>
@@ -134,20 +134,20 @@ export default function ProductDetails() {
                                 <div className="gallery-image">
                                     <div className='galery-content'>
                                         <div className="image-here">
-                                            <img className='image-desktop' src={product.gallery.first.desktop} alt="" />
-                                            <img className='image-tablet' src={product.gallery.first.tablet} alt="" />
-                                            <img className='image-mobile' src={product.gallery.first.mobile} alt="" />
+                                            <img className='image-desktop' src={`${process.env.PUBLIC_URL}${product.gallery.first.desktop}`} alt="" />
+                                            <img className='image-tablet' src={`${process.env.PUBLIC_URL}${product.gallery.first.tablet}`} alt="" />
+                                            <img className='image-mobile' src={`${process.env.PUBLIC_URL}${product.gallery.first.mobile}`} alt="" />
                                         </div>
                                         <div className="image-here">
-                                            <img className='image-desktop' src={product.gallery.second.desktop} alt="" />
-                                            <img className='image-tablet' src={product.gallery.second.tablet} alt="" />
-                                            <img className='image-mobile' src={product.gallery.second.mobile} alt="" />
+                                            <img className='image-desktop' src={`${process.env.PUBLIC_URL}${product.gallery.second.desktop}`} alt="" />
+                                            <img className='image-tablet' src={`${process.env.PUBLIC_URL}${product.gallery.second.tablet}`} alt="" />
+                                            <img className='image-mobile' src={`${process.env.PUBLIC_URL}${product.gallery.second.mobile}`} alt="" />
                                         </div>
                                     </div>
                                     <div className="image-here-2">
-                                        <img className='image-desktop' src={product.gallery.third.desktop} alt="" />
-                                        <img className='image-tablet' src={product.gallery.third.tablet} alt="" />
-                                        <img className='image-mobile' src={product.gallery.third.mobile} alt="" />
+                                        <img className='image-desktop' src={`${process.env.PUBLIC_URL}${product.gallery.third.desktop}`} alt="" />
+                                        <img className='image-tablet' src={`${process.env.PUBLIC_URL}${product.gallery.third.tablet}`} alt="" />
+                                        <img className='image-mobile' src={`${process.env.PUBLIC_URL}${product.gallery.third.mobile} `} alt="" />
                                     </div>
                                 </div>
                             </article>
@@ -160,9 +160,9 @@ export default function ProductDetails() {
                                             return <>
                                                 <div className='others-item'>
                                                     <li key={items.id}>
-                                                        <img className='image-desktop' src={items.image.desktop} alt="" />
-                                                        <img className='image-tablet' src={items.image.tablet} alt="" />
-                                                        <img className='image-mobile' src={items.image.mobile} alt="" />
+                                                        <img className='image-desktop' src={`${process.env.PUBLIC_URL}${items.image.desktop}`} alt="" />
+                                                        <img className='image-tablet' src={`${process.env.PUBLIC_URL}${items.image.tablet}`} alt="" />
+                                                        <img className='image-mobile' src={`${process.env.PUBLIC_URL}${items.image.mobile}`} alt="" />
                                                     </li>
 
                                                     <div className="other-item-content">

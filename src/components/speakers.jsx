@@ -21,9 +21,9 @@ export default function Speakers() {
                     <section>
                         <article className='products-container'>
                             <div className='product-img'>
-                                <img className='img-desktop' src='/assets/product-zx9-speaker/desktop/image-category-page-preview.jpg' alt="" />
-                                <img className='img-tablet' src='/assets/product-zx9-speaker/mobile/image-category-page-preview.jpg' alt="" />
-                                <img className='img-mobile' src='/assets/product-zx9-speaker/tablet/image-category-page-preview.jpg' alt="" />
+                                <img className='img-desktop' src={`${process.env.PUBLIC_URL}/assets/product-zx9-speaker/desktop/image-category-page-preview.jpg`} alt="" />
+                                <img className='img-tablet' src={`${process.env.PUBLIC_URL}/assets/product-zx9-speaker/mobile/image-category-page-preview.jpg`} alt="" />
+                                <img className='img-mobile' src={`${process.env.PUBLIC_URL}/assets/product-zx9-speaker/tablet/image-category-page-preview.jpg`} alt="" />
                             </div>
                             <div className='product-details'>
                                 <p className='new-product'>new product</p>
@@ -40,9 +40,9 @@ export default function Speakers() {
 
                             <div className="product-img-responsive">
                                 <div className='product-img'>
-                                    <img className='img-desktop' src='/assets/product-zx7-speaker/desktop/image-category-page-preview.jpg' alt="" />
-                                    <img className='img-tablet' src='/assets/product-zx7-speaker/mobile/image-category-page-preview.jpg' alt="" />
-                                    <img className='img-mobile' src='/assets/product-zx7-speaker/tablet/image-category-page-preview.jpg' alt="" />
+                                    <img className='img-desktop' src={`${process.env.PUBLIC_URL}/assets/product-zx7-speaker/desktop/image-category-page-preview.jpg`} alt="" />
+                                    <img className='img-tablet' src={`${process.env.PUBLIC_URL}/assets/product-zx7-speaker/mobile/image-category-page-preview.jpg`} alt="" />
+                                    <img className='img-mobile' src={`${process.env.PUBLIC_URL}/assets/product-zx7-speaker/tablet/image-category-page-preview.jpg`} alt="" />
                                 </div>
                             </div>
 
@@ -56,9 +56,9 @@ export default function Speakers() {
                             </div>
                             <div className="product-img-desktop">
                                 <div className='product-img'>
-                                    <img className='img-desktop' src='/assets/product-zx7-speaker/desktop/image-category-page-preview.jpg' alt="" />
-                                    <img className='img-tablet' src='/assets/product-zx7-speaker/mobile/image-category-page-preview.jpg' alt="" />
-                                    <img className='img-mobile' src='/assets/product-zx7-speaker/tablet/image-category-page-preview.jpg' alt="" />
+                                    <img className='img-desktop' src={`${process.env.PUBLIC_URL}/assets/product-zx7-speaker/desktop/image-category-page-preview.jpg`} alt="" />
+                                    <img className='img-tablet' src={`${process.env.PUBLIC_URL}/assets/product-zx7-speaker/mobile/image-category-page-preview.jpg`} alt="" />
+                                    <img className='img-mobile' src={`${process.env.PUBLIC_URL}/assets/product-zx7-speaker/tablet/image-category-page-preview.jpg`} alt="" />
                                 </div>
                             </div>
 

@@ -20,9 +20,9 @@ export default function Earphones() {
                     <section>
                         <article className='products-container'>
                             <div className='product-img'>
-                                <img className='img-desktop' src='/assets/product-yx1-earphones/desktop/image-category-page-preview.jpg' alt="" />
-                                <img className='img-tablet' src='/assets/product-yx1-earphones/mobile/image-category-page-preview.jpg' alt="" />
-                                <img className='img-mobile' src='/assets/product-yx1-earphones/tablet/image-category-page-preview.jpg' alt="" />
+                                <img className='img-desktop' src={`${process.env.PUBLIC_URL}/assets/product-yx1-earphones/desktop/image-category-page-preview.jpg`} alt="" />
+                                <img className='img-tablet' src={`${process.env.PUBLIC_URL}/assets/product-yx1-earphones/mobile/image-category-page-preview.jpg`} alt="" />
+                                <img className='img-mobile' src={`${process.env.PUBLIC_URL}/assets/product-yx1-earphones/tablet/image-category-page-preview.jpg`} alt="" />
                             </div>
                             <div className='product-details'>
                                 <p className='new-product'>new product</p>

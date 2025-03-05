@@ -263,7 +263,7 @@ function Checkout() {
                                             return (<>
                                                 <div className="cart-summary-info">
                                                     <div className="cart-summary-items">
-                                                        <img className='img-summary' src={items.image} alt="" />
+                                                        <img className='img-summary' src={`${process.env.PUBLIC_URL}${items.image}`} alt="" />
 
                                                         <div className="product-info">
                                                             <p className='product-name'>{items.name}</p>

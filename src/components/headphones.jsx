@@ -22,9 +22,9 @@ export default function Headphones() {
                     <section>
                         <article className='products-container'>
                             <div className='product-img'>
-                                <img className='img-desktop' src='/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg' alt="" />
-                                <img className='img-tablet' src='/assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg' alt="" />
-                                <img className='img-mobile' src='/assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg' alt="" />
+                                <img className='img-desktop' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg`} alt="" />
+                                <img className='img-tablet' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg`} alt="" />
+                                <img className='img-mobile' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg`} alt="" />
                             </div>
                             <div className='product-details'>
                                 <p className='new-product'>new product</p>
@@ -42,9 +42,9 @@ export default function Headphones() {
                         <article className='products-container'>
                             <div className='product-img-responsive'>
                                 <div className='product-img'>
-                                    <img className='img-desktop' src='/assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg' alt="" />
-                                    <img className='img-tablet' src='/assets/product-xx99-mark-one-headphones/mobile/image-category-page-preview.jpg' alt="" />
-                                    <img className='img-mobile' src='/assets/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg' alt="" />
+                                    <img className='img-desktop' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg`} alt="" />
+                                    <img className='img-tablet' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-one-headphones/mobile/image-category-page-preview.jpg`} alt="" />
+                                    <img className='img-mobile' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg`} alt="" />
                                 </div>
                             </div>
                             <div className='product-details'>
@@ -59,18 +59,18 @@ export default function Headphones() {
                             </div>
                             <div className="product-img-desktop">
                                 <div className='product-img'>
-                                    <img className='img-desktop' src='/assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg' alt="" />
-                                    <img className='img-tablet' src='/assets/product-xx99-mark-one-headphones/mobile/image-category-page-preview.jpg' alt="" />
-                                    <img className='img-mobile' src='/assets/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg' alt="" />
+                                    <img className='img-desktop' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg`} alt="" />
+                                    <img className='img-tablet' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-one-headphones/mobile/image-category-page-preview.jpg`} alt="" />
+                                    <img className='img-mobile' src={`${process.env.PUBLIC_URL}/assets/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg`} alt="" />
                                 </div>
                             </div>
                         </article>
 
                         <article className='products-container'>
                             <div className='product-img'>
-                                <img className='img-desktop' src='/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg' alt="" />
-                                <img className='img-tablet' src='/assets/product-xx59-headphones/mobile/image-category-page-preview.jpg' alt="" />
-                                <img className='img-mobile' src='/assets/product-xx59-headphones/tablet/image-category-page-preview.jpg' alt="" />
+                                <img className='img-desktop' src={`${process.env.PUBLIC_URL}/assets/product-xx59-headphones/desktop/image-category-page-preview.jpg`} alt="" />
+                                <img className='img-tablet' src={`${process.env.PUBLIC_URL}/assets/product-xx59-headphones/mobile/image-category-page-preview.jpg`} alt="" />
+                                <img className='img-mobile' src={`${process.env.PUBLIC_URL}/assets/product-xx59-headphones/tablet/image-category-page-preview.jpg`} alt="" />
                             </div>
                             <div className='product-details'>
                                 <h2>XX59 <br /> headphones</h2>

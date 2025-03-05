@@ -43,7 +43,7 @@ export function Form() {
             <>
                 <div className="login-form">
                     <div className="logo">
-                        <Link to='/'> <img src='/assets/shared/desktop/logo 1.png' alt="" /></Link>
+                        <Link to='/'> <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/logo 1.png`} alt="" /></Link>
                     </div>
 
                     <div className='login'>
@@ -112,7 +112,6 @@ export function Form() {
             handleSubmit,
             formState: { errors }
         } = useForm();
-
         const onSubmit = handleSubmit(async (data) => {
             const email = data.email;
             const password = data.Password;
@@ -136,7 +135,7 @@ export function Form() {
             <>
                 <div className="login-form">
                     <div className="logo">
-                        <Link to='/'> <img src='/assets/shared/desktop/logo 1.png' alt="" /></Link>
+                        <Link to='/'> <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/logo 1.png`} alt="" /></Link>
                     </div>
 
                     <div className='login'>
@@ -220,7 +219,7 @@ export function Form() {
             <div className="login-container">
                 {changeLoginToRegister ? <Register /> : <Login />}
                 <div className="login-image">
-                    <img src="/assets/product-xx99-mark-one-headphones/desktop/image-gallery-3.jpg" alt="" />
+                    <img src={`${process.env.PUBLIC_URL}`}"/assets/product-xx99-mark-one-headphones/desktop/image-gallery-3.jpg" alt="" />
                     <div className="slogan">
                         <h3>i simply love it !</h3>
                         <p>Live the best moments listening to the best music with <span>audiophile</span> products.</p>

@@ -33,7 +33,7 @@ const Cart = () => {
                             <>
                                 <div className="cart-product">
                                     <div className="cart-product-info">
-                                        <img className='img-product' key={items.id} src={items.image} alt="" />
+                                        <img className='img-product' key={items.id} src={`${process.env.PUBLIC_URL}${items.image}`} alt="" />
 
                                         <div className="product-info">
                                             <p className='product-name' key={items.id}>{items.name}</p>
@@ -132,7 +132,7 @@ export const ModalOrderDone = ({ grandTotal, cartProduct }) => {
             <div className="modal-order-done-container">
                 <div className="modal-order-done-content">
                     <div className="modal-order-done-icon">
-                        <img src="/assets/shared/desktop/icon-check.svg" alt="" />
+                        <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-check.svg`} alt="" />
                     </div>
                     <h3>THANK YOU FOR YOUR ORDER</h3>
                     <p>You will receive an email confirmation shortly.</p>
@@ -146,7 +146,7 @@ export const ModalOrderDone = ({ grandTotal, cartProduct }) => {
                                 return (
                                     <div className="modal-product-info">
                                         <div className="product-info">
-                                            <img className='img-product' key={items.id} src={items.image} alt="" />
+                                            <img className='img-product' key={items.id} src={`${process.env.PUBLIC_URL}${items.image} `} alt="" />
                                             <div className="product-information">
                                                 <p className='product-name' key={items.id}>{items.name}</p>
                                                 <p className='product-price' key={items.id}>{items.price}</p>
@@ -216,10 +216,10 @@ export function Header() {
             <div className='nav'>
                 <div className='nav-container'>
                     <div className='menu-icon'>
-                        <img src='/assets/shared/tablet/icon-hamburger.svg' alt="Menu Icon" className='menu-hamburger'
+                        <img src={`${process.env.PUBLIC_URL}/assets/shared/tablet/icon-hamburger.svg`} alt="Menu Icon" className='menu-hamburger'
                             onClick={handlerToggle}
                         />
-                        <img src="/assets/shared/desktop/logo.svg" alt="" className='logo' />
+                        <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/logo.svg`} alt="" className='logo' />
 
                     </div>
                     <NavLinks />
@@ -227,7 +227,7 @@ export function Header() {
                         <div>
                             <CiUser className='user-icon' onClick={handlerProfile} />
                         </div>
-                        <img src='/assets/shared/desktop/icon-cart.svg' alt=""
+                        <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-cart.svg`} alt=""
                             onClick={handlerCart} />
 
                     </div>
@@ -272,7 +272,7 @@ export function Menu() {
                     <div className='menu-contain'>
                         <div className='menu-content'>
                             <div className='image-content'>
-                                <img src='/assets/shared/desktop/image-category-thumbnail-headphones.png' alt="Headphone" />
+                                <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/image-category-thumbnail-headphones.png`} alt="Headphone" />
                                 <h3>  headphones</h3>
                                 <div className="btn-content">
                                     <Link to='/headphones'
@@ -289,7 +289,7 @@ export function Menu() {
                     <div className='menu-contain'>
                         <div className='menu-content'>
                             <div className='image-content'>
-                                <img src='/assets/shared/desktop/image-category-thumbnail-speakers.png' alt="Headphone" />
+                                <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/image-category-thumbnail-speakers.png`} alt="Headphone" />
                                 <h3>  spearkers</h3>
                                 <div className="btn-content">
                                     <Link to='/speakers'
@@ -306,7 +306,7 @@ export function Menu() {
                     <div className='menu-contain'>
                         <div className='menu-content'>
                             <div className='image-content'>
-                                <img src='/assets/shared/desktop/image-category-thumbnail-earphones.png' alt="Headphone" />
+                                <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/image-category-thumbnail-earphones.png`} alt="Headphone" />
                                 <h3>  earphones</h3>
                                 <div className="btn-content">
                                     <Link to='/earphones'
@@ -334,10 +334,10 @@ export function SectionBestAudio() {
 
             <div className="best-audio-container">
                 <div className="best-audio-image-content-mobile">
-                    <img src='/assets/shared/mobile/image-best-gear.jpg' alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/assets/shared/mobile/image-best-gear.jpg`} alt="" />
                 </div>
                 <div className="best-audio-image-content-tablet">
-                    <img src='/assets/shared/tablet/image-best-gear.jpg' alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/assets/shared/tablet/image-best-gear.jpg`} alt="" />
                 </div>
                 <div className="best-audio-content">
                     <h2>bringing you the <span>best</span>  audio gear</h2>
@@ -345,7 +345,7 @@ export function SectionBestAudio() {
                     <p>Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.</p>
                 </div>
                 <div className="best-audio-image-content">
-                    <img src='/assets/shared/desktop/image-best-gear.jpg' alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/image-best-gear.jpg`} alt="" />
                 </div>
 
             </div>
@@ -372,13 +372,13 @@ export function Footer() {
                     <p>Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.</p>
                     <div className='icons-footer'>
                         <div className="icons">
-                            <img src='/assets/shared/desktop/icon-facebook.svg' alt="" />
+                            <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-facebook.svg`} alt="" />
                         </div>
                         <div className="icons">
-                            <img src='/assets/shared/desktop/icon-twitter.svg' alt="" />
+                            <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-twitter.svg`} alt="" />
                         </div>
                         <div className="icons">
-                            <img src='/assets/shared/desktop/icon-instagram.svg' alt="" />
+                            <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-instagram.svg`} alt="" />
                         </div>
                     </div>
                 </div>
@@ -386,13 +386,13 @@ export function Footer() {
                     <p>Copyright 2021. All Rights Reserved</p>
                     <div className='icons-footer-responsive'>
                         <div className="icons">
-                            <img src='/assets/shared/desktop/icon-facebook.svg' alt="" />
+                            <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-facebook.svg`} alt="" />
                         </div>
                         <div className="icons">
-                            <img src='/assets/shared/desktop/icon-twitter.svg' alt="" />
+                            <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-twitter.svg`} alt="" />
                         </div>
                         <div className="icons">
-                            <img src='/assets/shared/desktop/icon-instagram.svg' alt="" />
+                            <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-instagram.svg`} alt="" />
                         </div>
                     </div>
                 </div>
