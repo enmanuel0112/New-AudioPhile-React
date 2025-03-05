@@ -615,7 +615,7 @@
     display: none;
 }
 
-@include m.responsive(820px) {
+@include m.responsive(1024px) {
 
     .background-navbar {
         background: rgb(0, 0, 0, 0.5);
@@ -686,6 +686,65 @@
 
     }
 }
+
+// Modal order done
+
+.modal-order-done {
+    width: 100%;
+    height: auto;
+
+    .modal-order-done-container {
+        max-width: 700px;
+        background-color: v.$orange;
+        padding: 2rem;
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+    }
+
+
+    .modal-order-done-product {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        margin: auto;
+
+
+        .modal-product {
+            background-color: v.$gray;
+            padding-right: 1rem;
+            border-radius: 10px 0 0 10px;
+
+            .modal-product-content {
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+
+                .modal-product-info {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1rem;
+
+                    .product-info {
+                        display: flex;
+                        gap: 1rem;
+
+                    }
+
+                    .img-product {
+                        width: 80px;
+                    }
+                }
+            }
+        }
+
+        .modal-amount {
+            background-color: v.$black;
+            border-radius: 0px 10px 10px 0px;
+            width: 80%;
+        }
+    }
+}
+
 
 //Best Audio section
 

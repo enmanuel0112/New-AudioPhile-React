@@ -125,6 +125,53 @@ const NavLinks = () => {
         </>
     )
 }
+export const ModalOrderDone = ({ grandTotal, cartProduct }) => {
+
+    return (
+        <div className="modal-order-done">
+            <div className="modal-order-done-container">
+                <div className="modal-order-done-content">
+                    <div className="modal-order-done-icon">
+                        <img src="/assets/shared/desktop/icon-check.svg" alt="" />
+                    </div>
+                    <h3>THANK YOU FOR YOUR ORDER</h3>
+                    <p>You will receive an email confirmation shortly.</p>
+                </div>
+
+                <div className="modal-order-done-product">
+                    <div className="modal-product">
+                        <div className="modal-product-content">
+                            {cartProduct.map(items => {
+
+                                return (
+                                    <div className="modal-product-info">
+                                        <div className="product-info">
+                                            <img className='img-product' key={items.id} src={items.image} alt="" />
+                                            <div className="product-information">
+                                                <p className='product-name' key={items.id}>{items.name}</p>
+                                                <p className='product-price' key={items.id}>{items.price}</p>
+                                            </div>
+
+                                        </div>
+
+                                        <p>x{items.quantity}</p>
+
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <div className="modal-amount">
+                        <p>grand total</p>
+                        <p>$ {grandTotal}</p>
+                    </div>
+                </div>
+                <button>back to home</button>
+            </div>
+
+        </div>
+    )
+}
 
 export function Header() {
 

@@ -1,20 +1,18 @@
 import React, { useContext, useEffect, useState, } from 'react'
 import { contextComponents } from '../context/contextComponents';
-import { Header, Footer, Loader } from './staticsComponents';
+import { Header, Footer, Loader, ModalOrderDone } from './staticsComponents';
 import { Form } from './login';
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import '../scss/StylesComponents/checkout.scss';
 
 
 function Checkout() {
     //hooks 
-    const { db, cartProduct, setEMoneyIsString } = useContext(contextComponents);
-    const { orderId, setOrderId } = useState([]);
+    const { db, cartProduct } = useContext(contextComponents);
     const [paymentMethodEmoney, setPaymentMethodEmoney] = useState('');
-    
-    
 
+    console.log('estos son los carritos', cartProduct)
     let total = 0;
     let shipping = 50;
     let grandTotal = 0;
@@ -52,11 +50,9 @@ function Checkout() {
 
             gettingData.forEach((doc) => {
 
-                
+
             })
 
-            setOrderId(orderInfo);
-        
 
         } catch (error) {
             console.log(error)
@@ -64,30 +60,15 @@ function Checkout() {
 
     }
 
-    function handlerPayment  (emoney) {
+    function handlerPayment(emoney) {
         setPaymentMethodEmoney(emoney.target.value);
     }
-
-    useEffect( () =>{
-    if(paymentMethodEmoney === 'e-money'){
-            setEMoneyIsString(true);
-    }else{
-        setEMoneyIsString(false)
-    }
-    }, [paymentMethodEmoney, setEMoneyIsString ]);
-
-   
-   
-
-
     return (
         <>
             <Header />
             <div className="main-checkout">
                 <div className="checkout">
-
                     <form onSubmit={handleSubmit(onSubmit)} >
-
                         <div className="checkout-container">
                             <h2>checkout</h2>
                             <div className="billing-details">
@@ -127,7 +108,6 @@ function Checkout() {
                                         />
                                     </label>
                                 </div>
-
                             </div>
 
                             <div className="shipping-info">
@@ -192,8 +172,8 @@ function Checkout() {
                                     <div className="payment-method">
                                         <label htmlFor="">
                                             <input type="radio" name='permission' id='e-money'
-                                            value='e-money'
-                                            
+                                                value='e-money'
+
                                                 {...register(' payment method', {
                                                     required: {
                                                         value: true,
@@ -210,8 +190,8 @@ function Checkout() {
 
                                         <label htmlFor="">
                                             <input type="radio" name='permission'
-                                            id='cash'
-                                            value= 'cash'
+                                                id='cash'
+                                                value='cash'
                                                 {...register(' payment method', {
                                                     required: {
                                                         value: true,
@@ -220,7 +200,7 @@ function Checkout() {
                                                 })
                                                 }
                                                 checked={paymentMethodEmoney === 'cash'}
-                                               
+
                                                 onChange={handlerPayment}
 
                                             />
@@ -229,37 +209,36 @@ function Checkout() {
                                     </div>
                                 </div>
 
-                            {paymentMethodEmoney === 'e-money' ? (
-                                    <div className='e-money-active'>     
-                                    <label htmlFor="e-money">
-                                        <span>e-Money Number</span>
-                                        <input type="number" 
-                                        {...register('e-money-number', {
+                                {paymentMethodEmoney === 'e-money' ? (
+                                    <div className='e-money-active'>
+                                        <label htmlFor="e-money">
+                                            <span>e-Money Number</span>
+                                            <input type="number"
+
+                                                {...register('e-money', {
                                                     required: {
                                                         value: true,
-                                                        message: ' this field must be fill'
+                                                        message: 'e-money is required'
                                                     }
                                                 })
                                                 }
-                                        
-                                        />
-                                    </label>
-    
-                                    <label htmlFor="e-money-pin" >
-                                        <span> e-Money PIN</span>
-                                        <input type="number"
-                                        {...register('e-money-pin', {
-                                            required: {
-                                                value: true,
-                                                message: ' this field must be fill'
-                                            }
-                                        })
-                                        }
-                                
-                                        />
-                                    </label>
-                                </div>
-                            ) : ''}
+                                            />
+                                        </label>
+
+                                        <label htmlFor="pin" >
+                                            <span> e-Money PIN</span>
+                                            <input type="password"
+                                                {...register('pin', {
+                                                    required: {
+                                                        value: true,
+                                                        message: 'e-money pin is required'
+                                                    }
+                                                })
+                                                }
+                                            />
+                                        </label>
+                                    </div>
+                                ) : ''}
 
 
                             </div>
@@ -326,12 +305,15 @@ function Checkout() {
 
                         </div>
                     </form>
-
                 </div>
             </div>
+            <ModalOrderDone grandTotal={grandTotal} cartProduct={cartProduct} />
             <Footer />
+
         </>
+
     )
+
 }
 
 function UserAuthenticated() {

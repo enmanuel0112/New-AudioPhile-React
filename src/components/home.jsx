@@ -49,7 +49,7 @@ export default function Home() {
                     <img className='img-mobile' src='/assets/home/mobile/image-speaker-zx7.jpg' alt="" />
                     <div className="zx7-content">
                         <h3>zx7 speaker</h3>
-                        <button className='btn-default-3'>see product</button>
+                        <Link className='btn-default-3' to='/speakers'> see product</Link>
                     </div>
 
                 </div>
@@ -68,7 +68,7 @@ export default function Home() {
                     <div className="yx1-earphone-contain">
                         <div className="yx1-earphone-content">
                             <h3>yx1 earphones</h3>
-                            <button className='btn-default-3'>see product</button>
+                            <Link className='btn-default-3' to='/earphones'>see product</Link>
                         </div>
                     </div>
                 </div>
