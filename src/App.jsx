@@ -1,6 +1,6 @@
 import './scss/App.scss';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Earphones from './components/earphones';
 import Headphones from './components/headphones';
 import Speakers from './components/speakers';
@@ -16,7 +16,7 @@ function App() {
   return (
     <StateComponents>
       <>
-        <Router>
+        <Router basename='/New-AudioPhile-React'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/earphones'
