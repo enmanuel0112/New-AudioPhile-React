@@ -17,27 +17,24 @@ const Cart = () => {
         <div className="cart-content">
             <div className="cart-product-details">
                 <div className="cart-items-number">
-                    <p>Cart (<span key={cartProduct.id}>{cartProduct.length}</span>)</p>
+                    <p>Cart (<span >{cartProduct.length}</span>)</p>
                     <button >Remove all</button>
                 </div>
                 <div className="product-added">
-                    {cartProduct.map(items => {
-
+                    {cartProduct.map((items, index) => {
                         let totalPrice = items.price;
-
                         let totalQuantity = items.quantity;
-
                         total = total + totalQuantity * totalPrice;
-
+                        console.log(items.id)
                         return (
                             <>
-                                <div className="cart-product">
+                                <div className="cart-product" key={index}>
                                     <div className="cart-product-info">
-                                        <img className='img-product' key={items.id} src={`${process.env.PUBLIC_URL}${items.image}`} alt="" />
+                                        <img className='img-product' src={`${process.env.PUBLIC_URL}${items.image}`} alt="" />
 
                                         <div className="product-info">
-                                            <p className='product-name' key={items.id}>{items.name}</p>
-                                            <p className='product-price' key={items.id}>{items.price}</p>
+                                            <p className='product-name'>{items.name}</p>
+                                            <p className='product-price'>{items.price}</p>
                                         </div>
                                     </div>
 
@@ -86,7 +83,6 @@ const Profile = () => {
     }
     return (
         <>
-
             <div className="profile-options">
                 <div className="profile-icon">
                     {user ? <FaSignOutAlt className='user-icon' /> : <FaUser className='user-icon' />}
@@ -98,9 +94,6 @@ const Profile = () => {
                 }
 
             </div>
-
-
-
         </>
     )
 }
@@ -115,61 +108,68 @@ const NavLinks = () => {
     return (
         <>
             <div className='btn-nav'>
-
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/earphones' >Earphones</NavLink>
                 <NavLink to='/headphones' >Headphones</NavLink>
                 <NavLink to='/speakers' >Speakers</NavLink>
-
             </div>
         </>
     )
 }
-export const ModalOrderDone = ({ grandTotal, cartProduct }) => {
-
+export const ModalOrderDone = ({ grandTotal, cartProduct, veremos }) => {
+    let prueba = cartProduct.slice(1).length
+    console.log('verificando el estado', veremos);
     return (
-        <div className="modal-order-done">
-            <div className="modal-order-done-container">
-                <div className="modal-order-done-content">
-                    <div className="modal-order-done-icon">
-                        <img src={`${process.env.PUBLIC_URL}/assets/shared/desktop/icon-check.svg`} alt="" />
+        <>
+            <div className={veremos ? "bacground-modal" : 'background-modal-hidden'}></div>
+            <div className={veremos ? "modal-order-done  modal-active" : "modal-order-done modal-hidden"}>
+                <div className="modal-order-done-container">
+                    <div className="modal-order-done-content">
+                        <div className="modal-order-done-icon">
+                            <img src={`${process.env.PUBLIC_URL}/assets/checkout/icon-order-confirmation.svg`} alt="" />
+                        </div>
+                        <h3>THANK YOU <br />FOR YOUR ORDER</h3>
+                        <p>You will receive an email confirmation shortly.</p>
                     </div>
-                    <h3>THANK YOU FOR YOUR ORDER</h3>
-                    <p>You will receive an email confirmation shortly.</p>
-                </div>
 
-                <div className="modal-order-done-product">
-                    <div className="modal-product">
-                        <div className="modal-product-content">
-                            {cartProduct.map(items => {
+                    <div className="modal-order-done-product">
+                        <div className="modal-product">
+                            <div className="modal-product-content">
+                                {cartProduct.slice(0, 1).map((items) => {
+                                    return (
+                                        <div className="modal-product-info" key={items.id}>
+                                            <div className="product-info">
+                                                <img className='img-product' src={`${process.env.PUBLIC_URL}${items.image} `} alt="" />
+                                                <div className="product-information">
+                                                    <div className='product-information-content'>
+                                                        <p className='product-name' key={items.id}>{items.name}</p>
+                                                        <p>x{items.quantity}</p>
+                                                    </div>
 
-                                return (
-                                    <div className="modal-product-info">
-                                        <div className="product-info">
-                                            <img className='img-product' key={items.id} src={`${process.env.PUBLIC_URL}${items.image} `} alt="" />
-                                            <div className="product-information">
-                                                <p className='product-name' key={items.id}>{items.name}</p>
-                                                <p className='product-price' key={items.id}>{items.price}</p>
+                                                    <p className='product-price' key={items.id}>$ {items.price}</p>
+                                                </div>
                                             </div>
-
+                                            <div className='line'></div>
+                                            <p className='other-items'>{prueba >= 1 ? `and ${prueba} other item(s)` : ''}</p>
                                         </div>
 
-                                        <p>x{items.quantity}</p>
+                                    )
+                                })}
 
-                                    </div>
-                                )
-                            })}
+                            </div>
+                        </div>
+                        <div className="modal-amount">
+                            <div className="grand-amount-content">
+                                <p>grand total</p>
+                                <p className='total-amount'>$ {grandTotal}</p>
+                            </div>
+
                         </div>
                     </div>
-                    <div className="modal-amount">
-                        <p>grand total</p>
-                        <p>$ {grandTotal}</p>
-                    </div>
+                    <Link to={'/'} className='btn-modal-done'>back to home</Link>
                 </div>
-                <button>back to home</button>
             </div>
-
-        </div>
+        </>
     )
 }
 
@@ -281,7 +281,6 @@ export function Menu() {
                                             <IoIosArrowForward />
                                         </span>
                                     </Link>
-
                                 </div>
                             </div>
                         </div>
@@ -328,10 +327,8 @@ export function Menu() {
 }
 
 export function SectionBestAudio() {
-
     return (
         <>
-
             <div className="best-audio-container">
                 <div className="best-audio-image-content-mobile">
                     <img src={`${process.env.PUBLIC_URL}/assets/shared/mobile/image-best-gear.jpg`} alt="" />
@@ -352,7 +349,6 @@ export function SectionBestAudio() {
         </>
     )
 }
-
 
 export function Footer() {
     return (

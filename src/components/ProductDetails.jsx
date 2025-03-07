@@ -10,8 +10,6 @@ import '../scss/StylesComponents/productsDetails.scss'
 import { useParams } from "react-router-dom";
 
 
-
-
 export default function ProductDetails() {
     const {
         amount,
@@ -27,7 +25,6 @@ export default function ProductDetails() {
         addProductToCart(item)
         setAddedProductModal(true);
         setAddedProduct(item);
-        console.log(addedProduct)
     }
 
 
@@ -158,27 +155,23 @@ export default function ProductDetails() {
                                     <div className="others-items-content">
                                         {product.others.map((items) => {
                                             return <>
-                                                <div className='others-item'>
-                                                    <li key={items.id}>
+                                                <div className='others-item' key={items.id}>
+                                                    <li>
                                                         <img className='image-desktop' src={`${process.env.PUBLIC_URL}${items.image.desktop}`} alt="" />
                                                         <img className='image-tablet' src={`${process.env.PUBLIC_URL}${items.image.tablet}`} alt="" />
                                                         <img className='image-mobile' src={`${process.env.PUBLIC_URL}${items.image.mobile}`} alt="" />
                                                     </li>
 
                                                     <div className="other-item-content">
-                                                        <p key={items.id} >{items.name}</p>
+                                                        <p>{items.name}</p>
                                                         <Link className='btn-default-1'
                                                             to={items.slug.includes('headphones') ? '/headphones' : '/speakers'}
-
                                                         >see product</Link>
                                                     </div>
-
                                                 </div>
                                             </>
                                         })}
                                     </div>
-
-
                                 </div>
                             </article>
 

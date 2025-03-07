@@ -13,7 +13,7 @@ export default function Home() {
         <Layout>
             <div className="hero">
                 <img className='image-desktop' src={`${process.env.PUBLIC_URL}/assets/home/desktop/image-hero.jpg`} alt="" />
-                <img className='image-tablet' src={`${process.env.PUBLIC_URL}` / assets / home / tablet / image - header.jpg} alt="" />
+                <img className='image-tablet' src={`${process.env.PUBLIC_URL} /assets/home/tablet/image-header.jpg`} alt="" />
                 <img className='image-mobile' src={`${process.env.PUBLIC_URL}/assets/home/mobile/image-header.jpg`} alt="" />
                 <div className="hero-container">
                     <div className="hero-content">

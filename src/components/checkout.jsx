@@ -11,8 +11,9 @@ function Checkout() {
     //hooks 
     const { db, cartProduct } = useContext(contextComponents);
     const [paymentMethodEmoney, setPaymentMethodEmoney] = useState('');
+    const [orderPlaced, setOrderPlaced] = useState(false);
 
-    console.log('estos son los carritos', cartProduct)
+
     let total = 0;
     let shipping = 50;
     let grandTotal = 0;
@@ -49,10 +50,7 @@ function Checkout() {
             const gettingData = await getDocs(collection(db, "orders"));
 
             gettingData.forEach((doc) => {
-
-
             })
-
 
         } catch (error) {
             console.log(error)
@@ -62,6 +60,13 @@ function Checkout() {
 
     function handlerPayment(emoney) {
         setPaymentMethodEmoney(emoney.target.value);
+    }
+
+    //Order Placed
+
+    const placeOrder = (e) => {
+        e.preventDefault();
+        setOrderPlaced(!orderPlaced);
     }
     return (
         <>
@@ -109,7 +114,6 @@ function Checkout() {
                                     </label>
                                 </div>
                             </div>
-
                             <div className="shipping-info">
                                 <h3>shipping info</h3>
                                 <label htmlFor="address">
@@ -163,7 +167,6 @@ function Checkout() {
 
 
                             </div>
-
                             <div className="payment-details">
                                 <h3>payment details</h3>
 
@@ -249,29 +252,23 @@ function Checkout() {
                                 <h2>summary</h2>
                                 <div className="cart-summary-content">
                                     {
-                                        cartProduct.map(items => {
-
+                                        cartProduct.map((items, index) => {
                                             let totalPrice = items.price;
-
                                             let totalQuantity = items.quantity;
-
                                             total = total + totalQuantity * totalPrice;
-
                                             vat = (total * 10) / 100;
-
                                             grandTotal = total + shipping;
                                             return (<>
                                                 <div className="cart-summary-info">
                                                     <div className="cart-summary-items">
                                                         <img className='img-summary' src={`${process.env.PUBLIC_URL}${items.image}`} alt="" />
-
                                                         <div className="product-info">
                                                             <p className='product-name'>{items.name}</p>
-                                                            <p className='product-price'>$ {items.price}</p>
+                                                            <p className='product-price' >$ {items.price}</p>
                                                         </div>
                                                     </div>
                                                     <div className="product-summary-amount">
-                                                        <p> x {items.quantity}</p>
+                                                        <p > x {items.quantity}</p>
                                                     </div>
                                                 </div>
                                             </>)
@@ -297,8 +294,9 @@ function Checkout() {
                                     <p className='price-total'>${grandTotal}</p>
                                 </div>
                                 <div className="btn">
-                                    <button className="btn-default-1"
-
+                                    <button
+                                        className="btn-default-1"
+                                        onClick={placeOrder}
                                     >continue & pay</button>
                                 </div>
                             </div>
@@ -307,7 +305,7 @@ function Checkout() {
                     </form>
                 </div>
             </div>
-            <ModalOrderDone grandTotal={grandTotal} cartProduct={cartProduct} />
+            <ModalOrderDone grandTotal={grandTotal} cartProduct={cartProduct} veremos={orderPlaced} />
             <Footer />
 
         </>
