@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { contextComponents } from './contextComponents';
-import '../scss/staticsComponents/stateComponents.scss';
 import appFirebase, { db } from '../credentials.js/credentials';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 const auth = getAuth(appFirebase);
