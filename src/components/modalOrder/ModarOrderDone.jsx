@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import '../modalOrder/modalOrder.scss';
+
 export const ModalOrderDone = ({ grandTotal, cartProduct, veremos }) => {
   let prueba = cartProduct.slice(1).length;
-  console.log("verificando el estado", veremos);
   return (
     <>
       <div

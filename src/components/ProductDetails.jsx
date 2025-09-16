@@ -57,9 +57,8 @@ export default function ProductDetails() {
             ></div>
 
             <div
-              className={`added-product-modal ${
-                addedProductModal ? "show" : "hidden"
-              }`}
+              className={`added-product-modal ${addedProductModal ? "show" : "hidden"
+                }`}
             >
               <div className="added-product-modal-content">
                 <p>

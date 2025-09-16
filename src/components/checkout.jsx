@@ -3,7 +3,7 @@ import { contextComponents } from "../context/contextComponents";
 import { Header } from "./header/Header";
 import { Loader } from "./loading/Loader";
 import { ModalOrderDone } from "./modalOrder/ModarOrderDone";
-import {Footer }from "./footer/Footer";
+import { Footer } from "./footer/Footer";
 import { Form } from "./login";
 import { useForm } from "react-hook-form";
 import { collection, addDoc, getDocs } from "firebase/firestore";
@@ -15,6 +15,7 @@ function Checkout() {
   const [paymentMethodEmoney, setPaymentMethodEmoney] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
 
+
   let total = 0;
   let shipping = 50;
   let grandTotal = 0;
@@ -23,12 +24,28 @@ function Checkout() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   //functions
 
+  const placeOrder = (e) => {
+    setOrderPlaced(!orderPlaced);
+  };
+
+
+
+  const verifyFromCompleted = () => {
+    if (isValid) {
+
+      placeOrder();
+    } else {
+      console.log('completa los campos')
+    }
+  }
+
   const onSubmit = async (data) => {
+    console.log('datos', data)
     const orderInfo = {
       clientInfo: {
         name: data.name,
@@ -39,8 +56,15 @@ function Checkout() {
         ZidCode: data.zipcode,
         City: data.city,
       },
+
       cartProduct: cartProduct,
+
     };
+    console.log('verifica', isValid)
+
+
+
+
     try {
       const docRef = await addDoc(collection(db, "orders"), {
         orderInfo,
@@ -48,7 +72,7 @@ function Checkout() {
 
       const gettingData = await getDocs(collection(db, "orders"));
 
-      gettingData.forEach((doc) => {});
+      gettingData.forEach((doc) => { });
     } catch (error) {
       console.log(error);
     }
@@ -60,10 +84,7 @@ function Checkout() {
 
   //Order Placed
 
-  const placeOrder = (e) => {
-    e.preventDefault();
-    setOrderPlaced(!orderPlaced);
-  };
+
   return (
     <>
       <Header />
@@ -259,7 +280,7 @@ function Checkout() {
               <div className="cart-summary-container">
                 <h2>summary</h2>
                 <div className="cart-summary-content">
-                  {cartProduct.map((items, index) => {
+                  {cartProduct.map((items) => {
                     let totalPrice = items.price;
                     let totalQuantity = items.quantity;
                     total = total + totalQuantity * totalPrice;
@@ -306,7 +327,7 @@ function Checkout() {
                   <p className="price-total">${grandTotal}</p>
                 </div>
                 <div className="btn">
-                  <button className="btn-default-1" onClick={placeOrder}>
+                  <button className="btn-default-1" onClick={verifyFromCompleted}  >
                     continue & pay
                   </button>
                 </div>

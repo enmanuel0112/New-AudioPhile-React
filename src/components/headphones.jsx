@@ -7,7 +7,7 @@ import data from "../data.json";
 
 export default function Headphones() {
   return (
-    <div> 
+    <div>
       <Layout>
         <>
           <div className="hero">
